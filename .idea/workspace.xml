@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c3101bc-840a-413f-9571-32e2a050243f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/credentials" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/DatabaseAccessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Inventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StringLengthException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DatabaseAccessor.java" beforeDir="false" />
-    </list>
+    <list default="true" id="6c3101bc-840a-413f-9571-32e2a050243f" name="Changes" comment="Nothing" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +47,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Test">
     <configuration name="DatabaseAccessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -96,8 +88,16 @@
       <workItem from="1669122210752" duration="3688000" />
       <workItem from="1669164969463" duration="43000" />
       <workItem from="1669166651310" duration="4693000" />
-      <workItem from="1669250967324" duration="1362000" />
+      <workItem from="1669250967324" duration="1733000" />
     </task>
+    <task id="LOCAL-00001" summary="Nothing">
+      <created>1669252600384</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669252600384</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +113,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Nothing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nothing" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
