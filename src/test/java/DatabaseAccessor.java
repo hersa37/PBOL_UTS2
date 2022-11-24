@@ -34,8 +34,8 @@ public class DatabaseAccessor {
 		try {
 			//Class.forName("com.mysql.cj.jdbc.Driver");
 			/*TODO
-			*  - Make URL from input
-			*  - Check for right table*/
+			*  - Check for right table
+			*  - make sure user is hashed*/
 			connection = DriverManager.getConnection("jdbc:mysql://zf2.h.filess.io:3305/College_troublemad", creds[0], creds[1]);
 			System.out.println("Connected");
 		} catch (Exception e) {

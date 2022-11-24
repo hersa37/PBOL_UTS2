@@ -1,3 +1,5 @@
+package database;
+
 public class Employee {
     private String id;
     private String nama;
@@ -16,10 +18,10 @@ public class Employee {
     }
 
     public void setId(String id) throws IllegalArgumentException {
-        if (id.length() == 4) {
+        if (id.length() == 8) {
             this.id = id;
         } else {
-            throw new IllegalArgumentException("Panjang ID harus sama dengan 4.");
+            throw new IllegalArgumentException("Panjang ID harus sama dengan 8.");
         }
     }
 
