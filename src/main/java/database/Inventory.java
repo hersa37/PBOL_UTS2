@@ -1,3 +1,4 @@
+package database;
 
 import java.sql.Date;
 
@@ -91,7 +92,7 @@ public class Inventory {
         if (Satuan.length() <= 10) {
             this.Satuan = Satuan;
         } else {
-            throw new IllegalArgumentException("Hanya 10 digits");
+            throw new IllegalArgumentException("Hanya 10 karakter");
         }
     }
     

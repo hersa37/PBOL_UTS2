@@ -1,16 +1,20 @@
 package database;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class Employee {
     private String id;
     private String nama;
+    private String pass;
     
     public Employee(String id){
         this.setId(id);
     }
 
-    public Employee(String id, String nama) {
+    public Employee(String id, String nama, String pass) {
         this.setId(id);
         this.setNama(nama);
+        this.setPass(pass);
     }
 
     public String getId() {
@@ -35,7 +39,22 @@ public class Employee {
         } else {
             throw new IllegalArgumentException("Nama terlalu panjang");
         }
-        
     }
-    
+
+    String getPass(){
+        return pass;
+    }
+
+    void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + id + '\'' +
+                ", nama='" + nama + '\'' +
+                ", pass='" + pass + '\'' +
+                '}';
+    }
 }

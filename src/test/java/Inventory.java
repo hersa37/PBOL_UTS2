@@ -93,7 +93,7 @@ public class Inventory {
 
 	@Override
 	public String toString() {
-		return "Inventory{" +
+		return "database.Inventory{" +
 				"sku='" + sku + '\'' +
 				", deskripsi='" + deskripsi + '\'' +
 				", harga=" + harga +
