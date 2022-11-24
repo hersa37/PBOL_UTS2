@@ -3,12 +3,12 @@ public class Employee {
     private String nama;
     
     public Employee(String id){
-        this.id = id;
+        this.setId(id);
     }
 
     public Employee(String id, String nama) {
-        this.id = id;
-        this.nama = nama;
+        this.setId(id);
+        this.setNama(nama);
     }
 
     public String getId() {
