@@ -30,60 +30,266 @@ public class GUI extends javax.swing.JFrame {
 
         parentPanel = new javax.swing.JPanel();
         landingPage = new javax.swing.JPanel();
+        loginPage = new javax.swing.JPanel();
+        databaseCredentials = new javax.swing.JPanel();
+        userInventoryManagement = new javax.swing.JPanel();
+        userInventoryTabs = new javax.swing.JTabbedPane();
+        userReturn = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        findSKUButton = new javax.swing.JButton();
+        findSKUTF = new javax.swing.JTextField();
+        returnButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        userLogin = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        userCheckout = new javax.swing.JPanel();
+        adminInventoryManagement = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        adminReturn = new javax.swing.JPanel();
+        adminCheckout = new javax.swing.JPanel();
+        adminAdd = new javax.swing.JPanel();
+        adminEditRemove = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         parentPanel.setLayout(new java.awt.CardLayout());
 
-        jButton1.setText("Inventory Management");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout landingPageLayout = new javax.swing.GroupLayout(landingPage);
         landingPage.setLayout(landingPageLayout);
         landingPageLayout.setHorizontalGroup(
             landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, landingPageLayout.createSequentialGroup()
-                .addContainerGap(273, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(261, 261, 261))
+            .addGap(0, 832, Short.MAX_VALUE)
         );
         landingPageLayout.setVerticalGroup(
             landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(landingPageLayout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jButton1)
-                .addContainerGap(163, Short.MAX_VALUE))
+            .addGap(0, 390, Short.MAX_VALUE)
         );
 
         parentPanel.add(landingPage, "card2");
 
-        jLabel1.setText("jLabel1");
-
-        javax.swing.GroupLayout userLoginLayout = new javax.swing.GroupLayout(userLogin);
-        userLogin.setLayout(userLoginLayout);
-        userLoginLayout.setHorizontalGroup(
-            userLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userLoginLayout.createSequentialGroup()
-                .addContainerGap(440, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(228, 228, 228))
+        javax.swing.GroupLayout loginPageLayout = new javax.swing.GroupLayout(loginPage);
+        loginPage.setLayout(loginPageLayout);
+        loginPageLayout.setHorizontalGroup(
+            loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 832, Short.MAX_VALUE)
         );
-        userLoginLayout.setVerticalGroup(
-            userLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userLoginLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addContainerGap(248, Short.MAX_VALUE))
+        loginPageLayout.setVerticalGroup(
+            loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
         );
 
-        parentPanel.add(userLogin, "userLogin");
+        parentPanel.add(loginPage, "userLogin");
+
+        javax.swing.GroupLayout databaseCredentialsLayout = new javax.swing.GroupLayout(databaseCredentials);
+        databaseCredentials.setLayout(databaseCredentialsLayout);
+        databaseCredentialsLayout.setHorizontalGroup(
+            databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 832, Short.MAX_VALUE)
+        );
+        databaseCredentialsLayout.setVerticalGroup(
+            databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
+        );
+
+        parentPanel.add(databaseCredentials, "card6");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "SKU", "Nama", "Satuan", "Tanggal Keluar", "Tanggal Kembali"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setColumnSelectionAllowed(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        findSKUButton.setText("Cari SKU");
+        findSKUButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findSKUButtonActionPerformed(evt);
+            }
+        });
+
+        returnButton.setText("Kembalikan");
+
+        jButton1.setText("Kembali");
+
+        jButton3.setText("Cetak Nota");
+
+        jLabel1.setText("<Error label>");
+
+        jLabel2.setText("<Error Icon>");
+
+        javax.swing.GroupLayout userReturnLayout = new javax.swing.GroupLayout(userReturn);
+        userReturn.setLayout(userReturnLayout);
+        userReturnLayout.setHorizontalGroup(
+            userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userReturnLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(userReturnLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userReturnLayout.createSequentialGroup()
+                        .addComponent(findSKUButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(findSKUTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(returnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(57, 57, 57))))
+        );
+        userReturnLayout.setVerticalGroup(
+            userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userReturnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(findSKUButton)
+                    .addComponent(findSKUTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(returnButton)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(23, 23, 23))
+        );
+
+        userInventoryTabs.addTab("Kembalikan", userReturn);
+
+        javax.swing.GroupLayout userCheckoutLayout = new javax.swing.GroupLayout(userCheckout);
+        userCheckout.setLayout(userCheckoutLayout);
+        userCheckoutLayout.setHorizontalGroup(
+            userCheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 832, Short.MAX_VALUE)
+        );
+        userCheckoutLayout.setVerticalGroup(
+            userCheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 359, Short.MAX_VALUE)
+        );
+
+        userInventoryTabs.addTab("Checkout", userCheckout);
+
+        javax.swing.GroupLayout userInventoryManagementLayout = new javax.swing.GroupLayout(userInventoryManagement);
+        userInventoryManagement.setLayout(userInventoryManagementLayout);
+        userInventoryManagementLayout.setHorizontalGroup(
+            userInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(userInventoryTabs)
+        );
+        userInventoryManagementLayout.setVerticalGroup(
+            userInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(userInventoryTabs)
+        );
+
+        parentPanel.add(userInventoryManagement, "card4");
+
+        javax.swing.GroupLayout adminReturnLayout = new javax.swing.GroupLayout(adminReturn);
+        adminReturn.setLayout(adminReturnLayout);
+        adminReturnLayout.setHorizontalGroup(
+            adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 832, Short.MAX_VALUE)
+        );
+        adminReturnLayout.setVerticalGroup(
+            adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 359, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Kembalikan", adminReturn);
+
+        javax.swing.GroupLayout adminCheckoutLayout = new javax.swing.GroupLayout(adminCheckout);
+        adminCheckout.setLayout(adminCheckoutLayout);
+        adminCheckoutLayout.setHorizontalGroup(
+            adminCheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 832, Short.MAX_VALUE)
+        );
+        adminCheckoutLayout.setVerticalGroup(
+            adminCheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 359, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Checkout", adminCheckout);
+
+        javax.swing.GroupLayout adminAddLayout = new javax.swing.GroupLayout(adminAdd);
+        adminAdd.setLayout(adminAddLayout);
+        adminAddLayout.setHorizontalGroup(
+            adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 832, Short.MAX_VALUE)
+        );
+        adminAddLayout.setVerticalGroup(
+            adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 359, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Tambah", adminAdd);
+
+        javax.swing.GroupLayout adminEditRemoveLayout = new javax.swing.GroupLayout(adminEditRemove);
+        adminEditRemove.setLayout(adminEditRemoveLayout);
+        adminEditRemoveLayout.setHorizontalGroup(
+            adminEditRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 832, Short.MAX_VALUE)
+        );
+        adminEditRemoveLayout.setVerticalGroup(
+            adminEditRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 359, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Ubah/Hapus", adminEditRemove);
+
+        javax.swing.GroupLayout adminInventoryManagementLayout = new javax.swing.GroupLayout(adminInventoryManagement);
+        adminInventoryManagement.setLayout(adminInventoryManagementLayout);
+        adminInventoryManagementLayout.setHorizontalGroup(
+            adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 832, Short.MAX_VALUE)
+            .addGroup(adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jTabbedPane1))
+        );
+        adminInventoryManagementLayout.setVerticalGroup(
+            adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jTabbedPane1))
+        );
+
+        parentPanel.add(adminInventoryManagement, "card5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,10 +305,9 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CardLayout card = (CardLayout) parentPanel.getLayout();
-        card.show(parentPanel, "userLogin");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void findSKUButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findSKUButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findSKUButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,10 +345,28 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel adminAdd;
+    private javax.swing.JPanel adminCheckout;
+    private javax.swing.JPanel adminEditRemove;
+    private javax.swing.JPanel adminInventoryManagement;
+    private javax.swing.JPanel adminReturn;
+    private javax.swing.JPanel databaseCredentials;
+    private javax.swing.JButton findSKUButton;
+    private javax.swing.JTextField findSKUTF;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel landingPage;
+    private javax.swing.JPanel loginPage;
     private javax.swing.JPanel parentPanel;
-    private javax.swing.JPanel userLogin;
+    private javax.swing.JButton returnButton;
+    private javax.swing.JPanel userCheckout;
+    private javax.swing.JPanel userInventoryManagement;
+    private javax.swing.JTabbedPane userInventoryTabs;
+    private javax.swing.JPanel userReturn;
     // End of variables declaration//GEN-END:variables
 }
