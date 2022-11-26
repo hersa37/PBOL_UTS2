@@ -1,29 +1,48 @@
+import database.Database;
+import database.Employee;
+import database.PasswordInvalidException;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.sql.Date;
+import java.sql.SQLException;
 
 public class Test {
 
 	public Test() {
-		JFrame frame = new JFrame("Test");
-		frame.setSize(300,300);
+		JFrame frame = new JFrame();
+		frame.setSize(200,300);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		JPanel panel1= new JPanel();
-		panel1.setBackground(Color.black);
 
-		frame.getContentPane().add(panel1);
+		String[] columnNames = {"SKU", "Nama", "Satuan", "Tanggal Keluar", "Tanggal Kembali"};
+		Object[][] data = {{"11111", "55555",124556,154353,1235}};
 
-		JButton button1  = new JButton("Button");
+		JTable table = new JTable(new DatabaseTableModel(columnNames, data));
 
+		frame.add(table);
 		frame.setVisible(true);
+
 	}
+
 	public static void main(String[] args) {
-		String start = "namasayahersa";
-		String hashedStart = BCrypt.hashpw(start, BCrypt.gensalt());
+//		Employee employee = new Employee("Ma000007","Galih","123");
+//		Database database = new Database();
+//		try {
+//			database.addEmployee(employee);
+//		} catch (SQLException | FileNotFoundException e) {
+//			System.out.println(e.getMessage());
+//		}
+////		new Test();
+////		Date date = new Date(System.currentTimeMillis());
+////		System.out.println(date);
+////		System.out.println(System.currentTimeMillis());
+//		String name = "echa";
+//
+//		System.out.println(name.substring(0,2));
+		System.out.println(0f+0f
+		);
 
-		System.out.println(hashedStart);
-
-		System.out.println(BCrypt.checkpw(start, hashedStart));
 	}
 }

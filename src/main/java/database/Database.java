@@ -228,4 +228,8 @@ public class Database {
 		}
 		return foundEmployee;
 	}
+
+	public void printToFile(Employee employee, LinkedList<Inventory> inventories) {
+
+	}
 }

@@ -7,6 +7,7 @@ package userInterface;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme;
 import database.Database;
 import database.Employee;
 import database.Inventory;
@@ -34,7 +35,8 @@ import java.util.ListIterator;
 public class GUI extends javax.swing.JFrame {
 
     private Employee employee;
-    private TableRowSorter<TableModel> filterUserReturn;
+
+
     /**
      * Creates new form GUI
      */
@@ -139,27 +141,26 @@ public class GUI extends javax.swing.JFrame {
         landingPageLayout.setHorizontalGroup(
             landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(landingPageLayout.createSequentialGroup()
+                .addGap(299, 299, 299)
                 .addGroup(landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(landingPageLayout.createSequentialGroup()
-                        .addGap(329, 329, 329)
+                        .addGap(41, 41, 41)
                         .addGroup(landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(inventoryLoginB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(credentialsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(landingPageLayout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(jLabel3)))
-                .addContainerGap(308, Short.MAX_VALUE))
+                            .addComponent(credentialsButton)))
+                    .addComponent(jLabel3))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         landingPageLayout.setVerticalGroup(
             landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(landingPageLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(113, 113, 113)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(inventoryLoginB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(credentialsButton)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         parentPanel.add(landingPage, "landingPage");
@@ -178,6 +179,12 @@ public class GUI extends javax.swing.JFrame {
         empIDTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empIDTFActionPerformed(evt);
+            }
+        });
+
+        loginPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginPassActionPerformed(evt);
             }
         });
 
@@ -229,7 +236,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(errorLabel))
                 .addGap(18, 18, 18)
                 .addComponent(backButton)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         parentPanel.add(loginPage, "loginPage");
@@ -273,32 +280,36 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        credErrorLabel.setText(" ");
+
         javax.swing.GroupLayout databaseCredentialsLayout = new javax.swing.GroupLayout(databaseCredentials);
         databaseCredentials.setLayout(databaseCredentialsLayout);
         databaseCredentialsLayout.setHorizontalGroup(
             databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, databaseCredentialsLayout.createSequentialGroup()
+                .addContainerGap(612, Short.MAX_VALUE)
+                .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(kembaliButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(testButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveButton, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(84, 84, 84))
             .addGroup(databaseCredentialsLayout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addGap(159, 159, 159)
                 .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(urlLabel)
-                    .addComponent(passwordLabel)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, databaseCredentialsLayout.createSequentialGroup()
-                        .addComponent(credErrorLabel)
-                        .addGap(361, 361, 361)
-                        .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(kembaliButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(testButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(saveButton, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(83, 83, 83))
                     .addGroup(databaseCredentialsLayout.createSequentialGroup()
+                        .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(urlLabel)
+                            .addComponent(passwordLabel)
+                            .addComponent(jLabel6))
+                        .addGap(52, 52, 52)
                         .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(idField, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                            .addComponent(idField)
                             .addComponent(urlField)
-                            .addComponent(passwordField))
-                        .addContainerGap())))
+                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(databaseCredentialsLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(credErrorLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         databaseCredentialsLayout.setVerticalGroup(
             databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,15 +326,15 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(testButton)
-                    .addComponent(credErrorLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(credErrorLabel)
+                .addGap(20, 20, 20)
+                .addComponent(testButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(saveButton)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(kembaliButton)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
 
         parentPanel.add(databaseCredentials, "databaseCredentials");
@@ -384,6 +395,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         userReturnPrint.setText("Cetak Nota");
+        userReturnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnPrintActionPerformed(evt);
+            }
+        });
 
         refreshButton.setText("Refresh");
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
@@ -401,24 +417,28 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(userReturnLayout.createSequentialGroup()
                         .addComponent(scrollPaneUserR, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(15, Short.MAX_VALUE))
-                    .addGroup(userReturnLayout.createSequentialGroup()
-                        .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addContainerGap(30, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userReturnLayout.createSequentialGroup()
+                        .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(userReturnLayout.createSequentialGroup()
-                                .addComponent(refreshButton)
-                                .addGap(230, 230, 230)
-                                .addComponent(userReturnErrorIcon)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(userReturnErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(userReturnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(userReturnLayout.createSequentialGroup()
-                                .addComponent(findSKUButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(findSKUTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(userReturnPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(userReturnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(userReturnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(userReturnLayout.createSequentialGroup()
+                                        .addComponent(refreshButton)
+                                        .addGap(230, 230, 230)
+                                        .addComponent(userReturnErrorIcon)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(userReturnErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(userReturnLayout.createSequentialGroup()
+                                        .addComponent(findSKUButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(findSKUTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(userReturnPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(userReturnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(57, 57, 57))))
         );
         userReturnLayout.setVerticalGroup(
@@ -437,9 +457,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(userReturnPrint)
                     .addComponent(findSKUButton)
                     .addComponent(findSKUTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(userReturnBack)
-                .addGap(23, 23, 23))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         userInventoryTabs.addTab("Kembalikan", userReturn);
@@ -448,11 +468,11 @@ public class GUI extends javax.swing.JFrame {
         userCheckout.setLayout(userCheckoutLayout);
         userCheckoutLayout.setHorizontalGroup(
             userCheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGap(0, 847, Short.MAX_VALUE)
         );
         userCheckoutLayout.setVerticalGroup(
             userCheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGap(0, 378, Short.MAX_VALUE)
         );
 
         userInventoryTabs.addTab("Checkout", userCheckout);
@@ -474,11 +494,11 @@ public class GUI extends javax.swing.JFrame {
         adminReturn.setLayout(adminReturnLayout);
         adminReturnLayout.setHorizontalGroup(
             adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGap(0, 847, Short.MAX_VALUE)
         );
         adminReturnLayout.setVerticalGroup(
             adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGap(0, 378, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Kembalikan", adminReturn);
@@ -487,11 +507,11 @@ public class GUI extends javax.swing.JFrame {
         adminCheckout.setLayout(adminCheckoutLayout);
         adminCheckoutLayout.setHorizontalGroup(
             adminCheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGap(0, 847, Short.MAX_VALUE)
         );
         adminCheckoutLayout.setVerticalGroup(
             adminCheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGap(0, 378, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Checkout", adminCheckout);
@@ -500,11 +520,11 @@ public class GUI extends javax.swing.JFrame {
         adminAdd.setLayout(adminAddLayout);
         adminAddLayout.setHorizontalGroup(
             adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGap(0, 847, Short.MAX_VALUE)
         );
         adminAddLayout.setVerticalGroup(
             adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGap(0, 378, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Tambah", adminAdd);
@@ -513,11 +533,11 @@ public class GUI extends javax.swing.JFrame {
         adminEditRemove.setLayout(adminEditRemoveLayout);
         adminEditRemoveLayout.setHorizontalGroup(
             adminEditRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGap(0, 847, Short.MAX_VALUE)
         );
         adminEditRemoveLayout.setVerticalGroup(
             adminEditRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGap(0, 378, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Ubah/Hapus", adminEditRemove);
@@ -526,13 +546,13 @@ public class GUI extends javax.swing.JFrame {
         adminInventoryManagement.setLayout(adminInventoryManagementLayout);
         adminInventoryManagementLayout.setHorizontalGroup(
             adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGap(0, 847, Short.MAX_VALUE)
             .addGroup(adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane1))
         );
         adminInventoryManagementLayout.setVerticalGroup(
             adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
             .addGroup(adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane1))
         );
@@ -554,7 +574,7 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void findSKUButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findSKUButtonActionPerformed
-        filterUserReturn = new TableRowSorter<>(userReturnTable.getModel());
+        TableRowSorter<TableModel> filterUserReturn = new TableRowSorter<>(userReturnTable.getModel());
         userReturnTable.setRowSorter(filterUserReturn);
         String sku = findSKUTF.getText();
         if(sku.trim().length() == 0) {
@@ -577,6 +597,7 @@ public class GUI extends javax.swing.JFrame {
     private void userReturnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnBackActionPerformed
         String[] columnNames = {"SKU", "Nama", "Satuan", "Tanggal Keluar", "Tanggal Kembali"};
         Object[][] data = {{}};
+        employee = null;
         userReturnTable.setModel(new DefaultTableModel(data, columnNames));
         CardLayout card = (CardLayout) parentPanel.getLayout();
         card.show(parentPanel, "landingPage");
@@ -602,12 +623,18 @@ public class GUI extends javax.swing.JFrame {
                 empLogin = new Employee(empIDTF.getText());
                 empLogin.setPass(String.copyValueOf(loginPass.getPassword()));
                 employee = database.validateEmployee(empLogin);
+                if(employee == null) {
+                    throw new IllegalArgumentException("User tidak ditemukan");
+                }
                 errorLabel.setText("");
                 empIDTF.setText("");
                 loginPass.setText("");
                 CardLayout card = (CardLayout) parentPanel.getLayout();
-                card.show(parentPanel, "userInventoryManagement");
-
+                if(employee.getId().substring(0,2).compareTo("Ma") != 0) {
+                    card.show(parentPanel, "userInventoryManagement");
+                } else {
+                    card.show(parentPanel, "adminInventoryManagement");
+                }
             } catch (PasswordInvalidException | IllegalArgumentException | FileNotFoundException | SQLException e) {
                 errorLabel.setText(e.getMessage());
             } finally {
@@ -623,28 +650,21 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_empIDTFActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        CardLayout card = (CardLayout) parentPanel.getLayout();
-        card.show(parentPanel, "landingPage");
+        returnToLanding();
+
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliButtonActionPerformed
+    private void returnToLanding(){
+        employee = null;
         CardLayout card = (CardLayout) parentPanel.getLayout();
         card.show(parentPanel, "landingPage");
+    }
+    private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliButtonActionPerformed
+        returnToLanding();
     }//GEN-LAST:event_kembaliButtonActionPerformed
 
     private void testButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testButtonActionPerformed
-        Thread thread = new Thread(() -> {
-            credErrorLabel.setText("Mengubungi...");
-            testButton.setEnabled(false);
-            saveButton.setEnabled(false);
-        });
-
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException ex) {
-            credErrorLabel.setText(ex.getMessage());
-        }
+        connectingToDatabase();
 
         Thread thread1 = new Thread(() -> {
             Connection connection = null;
@@ -668,16 +688,7 @@ public class GUI extends javax.swing.JFrame {
         thread1.start();
     }//GEN-LAST:event_testButtonActionPerformed
 
-
-    private void urlFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urlFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_urlFieldActionPerformed
-
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
-
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+    private void connectingToDatabase() {
         Thread thread = new Thread(() -> {
             credErrorLabel.setText("Mengubungi...");
             testButton.setEnabled(false);
@@ -690,12 +701,26 @@ public class GUI extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             credErrorLabel.setText(ex.getMessage());
         }
+    }
+
+
+    private void urlFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urlFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_urlFieldActionPerformed
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        connectingToDatabase();
 
         Thread thread1 = new Thread(() -> {
             Connection connection = null;
             try {
                 connection = DriverManager.getConnection(urlField.getText(), idField.getText(), String.copyValueOf(passwordField.getPassword()));
-                Database.saveCredentials(urlField.getText(), idField.getText(),String.copyValueOf(passwordField.getPassword()));;
+                Database.saveCredentials(urlField.getText(), idField.getText(),String.copyValueOf(passwordField.getPassword()));
+                credErrorLabel.setText("Berhasil menyimpan");
             } catch (SQLException ex) {
                 credErrorLabel.setText(ex.getMessage());
                 System.out.println(ex.getMessage());
@@ -768,6 +793,14 @@ public class GUI extends javax.swing.JFrame {
         thread1.start();
     }//GEN-LAST:event_userReturnReturnActionPerformed
 
+    private void userReturnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnPrintActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userReturnPrintActionPerformed
+
+    private void loginPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPassActionPerformed
+        loginButtonActionPerformed(evt);
+    }//GEN-LAST:event_loginPassActionPerformed
+
     private Object[][] userReturnData() throws SQLException, FileNotFoundException {
         Database database = new Database();
         Object[][] data = null;
@@ -805,7 +838,7 @@ public class GUI extends javax.swing.JFrame {
 //                    break;
 //                }
 //            }
-            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+            javax.swing.UIManager.setLookAndFeel(new FlatArcDarkIJTheme());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }

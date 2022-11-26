@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71872b82-6e2d-4368-a3bb-1bf95511ee64" name="Changes" comment="- Buat struktur dasar GUI&#10;- Tambah PDF struktur GUI">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="71872b82-6e2d-4368-a3bb-1bf95511ee64" name="Changes" comment="- Mayoritas fungsi untuk pengembalian user bekerja">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Inventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/userInterface/GUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/userInterface/GUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/userInterface/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/userInterface/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Test.java" afterDir="false" />
@@ -63,7 +59,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;SQL Dialects&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.GUI">
+  <component name="RunManager" selected="Application.Test">
     <configuration name="Database" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="database.Database" />
       <module name="PBOL_UTS2" />
@@ -99,8 +95,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.Database" />
       </list>
     </recent_temporary>
@@ -120,7 +116,9 @@
       <workItem from="1669334600313" duration="646000" />
       <workItem from="1669340572189" duration="2119000" />
       <workItem from="1669367900895" duration="15936000" />
-      <workItem from="1669418890469" duration="7080000" />
+      <workItem from="1669418890469" duration="10440000" />
+      <workItem from="1669439612857" duration="6434000" />
+      <workItem from="1669502404231" duration="2065000" />
     </task>
     <task id="LOCAL-00001" summary="- Tambah password untuk Employee.java&#10;- Buat table employees&#10;- Password disimpan sebagai has menggunakan BCrypt&#10;- Rapikan method untuk akses database&#10;- Tambah method untuk tambah dan validasi employee saat login">
       <created>1669297320759</created>
@@ -143,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669334643494</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- Mayoritas fungsi untuk pengembalian user bekerja">
+      <created>1669426303833</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669426303833</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +170,8 @@
     <MESSAGE value="- Tambah method untuk add/remove inventory&#10;- Buat class untuk GUI" />
     <MESSAGE value="- Buat struktur dasar GUI" />
     <MESSAGE value="- Buat struktur dasar GUI&#10;- Tambah PDF struktur GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Buat struktur dasar GUI&#10;- Tambah PDF struktur GUI" />
+    <MESSAGE value="- Mayoritas fungsi untuk pengembalian user bekerja" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Mayoritas fungsi untuk pengembalian user bekerja" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
