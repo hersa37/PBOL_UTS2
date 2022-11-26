@@ -2,8 +2,7 @@ package database;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -19,7 +18,12 @@ public class Database {
 	}
 
 
-	public Connection getConnection() throws FileNotFoundException {
+	public static void saveCredentials(String url, String id, String pass) throws IOException {
+		Writer writer = new FileWriter("credentials");
+		writer.write(url+"\n"+id+"\n"+pass);
+		writer.close();
+	}
+	public Connection getConnection() throws FileNotFoundException, SQLException {
 
         /*
         URL, user, dan password disimpan dalam file bernama credentials
@@ -39,18 +43,17 @@ public class Database {
 			creds[i] = credentials.next();
 			i++;
 		}
-		Connection conn = null;
-		try {
-			conn = DriverManager.getConnection(creds[0], creds[1], creds[2]);
-		} catch (SQLException ex) {
-			System.out.println("Koneksi tidak berhasil.");
-			System.out.println(ex.getMessage());
-		}
+		Connection conn;
+		conn = DriverManager.getConnection(creds[0], creds[1], creds[2]);
 		/*
 		conn = null dihandle method yang panggil
 		 */
 
 		return conn;
+	}
+
+	public boolean testConnection(String url, String id, String pass) throws SQLException{
+		return (DriverManager.getConnection(url, id, pass) != null);
 	}
 
 	public void addInventory(Inventory inventory) throws SQLException, FileNotFoundException{
@@ -96,7 +99,7 @@ public class Database {
 		return list;
 	}
 
-	public LinkedList<Inventory> getEmployeeInventory(Inventory employeeInventory) throws SQLException, FileNotFoundException {
+	public LinkedList<Inventory> getEmployeeInventory(Employee employeeInventory) throws SQLException, FileNotFoundException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -104,7 +107,7 @@ public class Database {
 		try {
 			connection = this.getConnection();
 			statement = connection.prepareStatement("SELECT * FROM Inventory WHERE Peminjam = ?");
-			statement.setString(1, employeeInventory.getPeminjam());
+			statement.setString(1, employeeInventory.getId());
 			resultSet = statement.executeQuery();
 			list = createInventoryList(resultSet);
 		} finally {
@@ -212,6 +215,7 @@ public class Database {
 				if(!BCrypt.checkpw(employee.getPass(), resultSet.getString(3))) {
 					throw new PasswordInvalidException();
 				}
+				employee.setPass(null);
 				foundEmployee = new Employee(
 						resultSet.getString(1),
 						resultSet.getString(2),

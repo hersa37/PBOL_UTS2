@@ -23,6 +23,10 @@ public class Inventory {
         this.setSatuan(Satuan);
         this.setPeminjam(Peminjam);
     }
+
+    public Inventory(int sku) {
+        this.SKU = sku;
+    }
     
     public int getSKU() {
         return SKU;
@@ -101,11 +105,10 @@ public class Inventory {
     }
     
     public void setPeminjam(String Peminjam) throws IllegalArgumentException {
-        if (Peminjam.length() <= 8) {
+        if (Peminjam == null || Peminjam.length() <= 8) {
             this.Peminjam = Peminjam;            
         } else {
             throw new IllegalArgumentException("ID terlalu panjang");
         }
-        
     }
 }

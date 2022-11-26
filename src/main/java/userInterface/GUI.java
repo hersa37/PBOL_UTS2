@@ -4,7 +4,28 @@
  */
 package userInterface;
 
-import java.awt.CardLayout;
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import database.Database;
+import database.Employee;
+import database.Inventory;
+import database.PasswordInvalidException;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  *
@@ -12,11 +33,30 @@ import java.awt.CardLayout;
  */
 public class GUI extends javax.swing.JFrame {
 
+    private Employee employee;
+    private TableRowSorter<TableModel> filterUserReturn;
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        userReturnTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                super.getTableCellRendererComponent(table, value, isSelected,hasFocus, row, column);
+                Date status = (Date) table.getModel().getValueAt(row,4);
+                if((status != null) && (new Date(System.currentTimeMillis()).compareTo(status) == 1)){
+                    setBackground(new Color(255,119,119));
+                    setForeground(Color.black);
+                } else if (isSelected) {
+                    setBackground(new Color(37,150,190));
+                    setForeground(Color.black);
+                } else {
+                    setBackground(table.getBackground());
+                    setForeground(table.getForeground());
+                }
+                return this;
+            }
+        });
     }
 
     /**
@@ -30,20 +70,41 @@ public class GUI extends javax.swing.JFrame {
 
         parentPanel = new javax.swing.JPanel();
         landingPage = new javax.swing.JPanel();
+        inventoryLoginB = new javax.swing.JButton();
+        credentialsButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         loginPage = new javax.swing.JPanel();
+        loginButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        empIDTF = new javax.swing.JTextField();
+        loginPass = new javax.swing.JPasswordField();
+        backButton = new javax.swing.JButton();
+        errorLabel = new javax.swing.JLabel();
         databaseCredentials = new javax.swing.JPanel();
+        passwordField = new javax.swing.JPasswordField();
+        kembaliButton = new javax.swing.JButton();
+        testButton = new javax.swing.JButton();
+        urlLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
+        urlField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        idField = new javax.swing.JTextField();
+        saveButton = new javax.swing.JButton();
+        credErrorLabel = new javax.swing.JLabel();
         userInventoryManagement = new javax.swing.JPanel();
         userInventoryTabs = new javax.swing.JTabbedPane();
         userReturn = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        scrollPaneUserR = new javax.swing.JScrollPane();
+        userReturnTable = new javax.swing.JTable();
         findSKUButton = new javax.swing.JButton();
         findSKUTF = new javax.swing.JTextField();
-        returnButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        userReturnReturn = new javax.swing.JButton();
+        userReturnBack = new javax.swing.JButton();
+        userReturnPrint = new javax.swing.JButton();
+        userReturnErrorLabel = new javax.swing.JLabel();
+        userReturnErrorIcon = new javax.swing.JLabel();
+        refreshButton = new javax.swing.JButton();
         userCheckout = new javax.swing.JPanel();
         adminInventoryManagement = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -53,65 +114,233 @@ public class GUI extends javax.swing.JFrame {
         adminEditRemove = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         parentPanel.setLayout(new java.awt.CardLayout());
+
+        inventoryLoginB.setText("Inventory Login");
+        inventoryLoginB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inventoryLoginBActionPerformed(evt);
+            }
+        });
+
+        credentialsButton.setText("Database Credentials");
+        credentialsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                credentialsButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("D-Sub Inventory Management System");
 
         javax.swing.GroupLayout landingPageLayout = new javax.swing.GroupLayout(landingPage);
         landingPage.setLayout(landingPageLayout);
         landingPageLayout.setHorizontalGroup(
             landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGroup(landingPageLayout.createSequentialGroup()
+                .addGroup(landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(landingPageLayout.createSequentialGroup()
+                        .addGap(329, 329, 329)
+                        .addGroup(landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(inventoryLoginB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(credentialsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(landingPageLayout.createSequentialGroup()
+                        .addGap(288, 288, 288)
+                        .addComponent(jLabel3)))
+                .addContainerGap(308, Short.MAX_VALUE))
         );
         landingPageLayout.setVerticalGroup(
             landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(landingPageLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(inventoryLoginB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(credentialsButton)
+                .addContainerGap(182, Short.MAX_VALUE))
         );
 
-        parentPanel.add(landingPage, "card2");
+        parentPanel.add(landingPage, "landingPage");
+
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Employee ID");
+
+        jLabel5.setText("Password");
+
+        empIDTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empIDTFActionPerformed(evt);
+            }
+        });
+
+        backButton.setText("Kembali");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginPageLayout = new javax.swing.GroupLayout(loginPage);
         loginPage.setLayout(loginPageLayout);
         loginPageLayout.setHorizontalGroup(
             loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGroup(loginPageLayout.createSequentialGroup()
+                .addContainerGap(245, Short.MAX_VALUE)
+                .addGroup(loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGap(62, 62, 62)
+                .addGroup(loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPageLayout.createSequentialGroup()
+                        .addComponent(errorLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(114, 114, 114))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPageLayout.createSequentialGroup()
+                        .addGroup(loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(loginPass, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(empIDTF))
+                        .addGap(241, 241, 241))))
         );
         loginPageLayout.setVerticalGroup(
             loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPageLayout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addGroup(loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(empIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(loginPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61)
+                .addGroup(loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginButton)
+                    .addComponent(errorLabel))
+                .addGap(18, 18, 18)
+                .addComponent(backButton)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
-        parentPanel.add(loginPage, "userLogin");
+        parentPanel.add(loginPage, "loginPage");
+
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
+
+        kembaliButton.setText("Kembali");
+        kembaliButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kembaliButtonActionPerformed(evt);
+            }
+        });
+
+        testButton.setText("Tes Koneksi");
+        testButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testButtonActionPerformed(evt);
+            }
+        });
+
+        urlLabel.setText("URL");
+
+        passwordLabel.setText("Password");
+
+        urlField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                urlFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("User ID");
+
+        saveButton.setText("Simpan Pengaturan");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout databaseCredentialsLayout = new javax.swing.GroupLayout(databaseCredentials);
         databaseCredentials.setLayout(databaseCredentialsLayout);
         databaseCredentialsLayout.setHorizontalGroup(
             databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGroup(databaseCredentialsLayout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(urlLabel)
+                    .addComponent(passwordLabel)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, databaseCredentialsLayout.createSequentialGroup()
+                        .addComponent(credErrorLabel)
+                        .addGap(361, 361, 361)
+                        .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(kembaliButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(testButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(saveButton, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(83, 83, 83))
+                    .addGroup(databaseCredentialsLayout.createSequentialGroup()
+                        .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(idField, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                            .addComponent(urlField)
+                            .addComponent(passwordField))
+                        .addContainerGap())))
         );
         databaseCredentialsLayout.setVerticalGroup(
             databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, databaseCredentialsLayout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(urlLabel)
+                    .addComponent(urlField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordLabel)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(testButton)
+                    .addComponent(credErrorLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(saveButton)
+                .addGap(14, 14, 14)
+                .addComponent(kembaliButton)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        parentPanel.add(databaseCredentials, "card6");
+        parentPanel.add(databaseCredentials, "databaseCredentials");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        userReturnTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "SKU", "Nama", "Satuan", "Tanggal Keluar", "Tanggal Kembali"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -122,15 +351,15 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        userReturnTable.setRowHeight(30);
+        userReturnTable.getTableHeader().setReorderingAllowed(false);
+        scrollPaneUserR.setViewportView(userReturnTable);
+        if (userReturnTable.getColumnModel().getColumnCount() > 0) {
+            userReturnTable.getColumnModel().getColumn(0).setResizable(false);
+            userReturnTable.getColumnModel().getColumn(1).setResizable(false);
+            userReturnTable.getColumnModel().getColumn(2).setResizable(false);
+            userReturnTable.getColumnModel().getColumn(3).setResizable(false);
+            userReturnTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
         findSKUButton.setText("Cari SKU");
@@ -140,15 +369,28 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        returnButton.setText("Kembalikan");
+        userReturnReturn.setText("Kembalikan");
+        userReturnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnReturnActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Kembali");
+        userReturnBack.setText("Kembali");
+        userReturnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnBackActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Cetak Nota");
+        userReturnPrint.setText("Cetak Nota");
 
-        jLabel1.setText("<Error label>");
-
-        jLabel2.setText("<Error Icon>");
+        refreshButton.setText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout userReturnLayout = new javax.swing.GroupLayout(userReturn);
         userReturn.setLayout(userReturnLayout);
@@ -158,39 +400,45 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(userReturnLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollPaneUserR, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(15, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userReturnLayout.createSequentialGroup()
-                        .addComponent(findSKUButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(findSKUTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(userReturnLayout.createSequentialGroup()
+                        .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(userReturnLayout.createSequentialGroup()
+                                .addComponent(refreshButton)
+                                .addGap(230, 230, 230)
+                                .addComponent(userReturnErrorIcon)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(userReturnErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(userReturnLayout.createSequentialGroup()
+                                .addComponent(findSKUButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(findSKUTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(returnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(userReturnPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(userReturnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(userReturnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(57, 57, 57))))
         );
         userReturnLayout.setVerticalGroup(
             userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(userReturnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPaneUserR, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(findSKUButton)
-                    .addComponent(findSKUTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(returnButton)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(userReturnReturn)
+                    .addComponent(userReturnErrorLabel)
+                    .addComponent(userReturnErrorIcon)
+                    .addComponent(refreshButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addGroup(userReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userReturnPrint)
+                    .addComponent(findSKUButton)
+                    .addComponent(findSKUTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(userReturnBack)
                 .addGap(23, 23, 23))
         );
 
@@ -220,7 +468,7 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(userInventoryTabs)
         );
 
-        parentPanel.add(userInventoryManagement, "card4");
+        parentPanel.add(userInventoryManagement, "userInventoryManagement");
 
         javax.swing.GroupLayout adminReturnLayout = new javax.swing.GroupLayout(adminReturn);
         adminReturn.setLayout(adminReturnLayout);
@@ -289,7 +537,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1))
         );
 
-        parentPanel.add(adminInventoryManagement, "card5");
+        parentPanel.add(adminInventoryManagement, "adminInventoryManagement");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -306,9 +554,241 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void findSKUButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findSKUButtonActionPerformed
-        // TODO add your handling code here:
+        filterUserReturn = new TableRowSorter<>(userReturnTable.getModel());
+        userReturnTable.setRowSorter(filterUserReturn);
+        String sku = findSKUTF.getText();
+        if(sku.trim().length() == 0) {
+            filterUserReturn.setRowFilter(null);
+        } else {
+            filterUserReturn.setRowFilter(RowFilter.regexFilter("(?i)" + sku));
+        }
     }//GEN-LAST:event_findSKUButtonActionPerformed
 
+    private void credentialsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_credentialsButtonActionPerformed
+        CardLayout card = (CardLayout) parentPanel.getLayout();
+        card.show(parentPanel, "databaseCredentials");
+    }//GEN-LAST:event_credentialsButtonActionPerformed
+
+    private void inventoryLoginBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryLoginBActionPerformed
+        CardLayout card = (CardLayout) parentPanel.getLayout();
+        card.show(parentPanel, "loginPage");
+    }//GEN-LAST:event_inventoryLoginBActionPerformed
+
+    private void userReturnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnBackActionPerformed
+        String[] columnNames = {"SKU", "Nama", "Satuan", "Tanggal Keluar", "Tanggal Kembali"};
+        Object[][] data = {{}};
+        userReturnTable.setModel(new DefaultTableModel(data, columnNames));
+        CardLayout card = (CardLayout) parentPanel.getLayout();
+        card.show(parentPanel, "landingPage");
+    }//GEN-LAST:event_userReturnBackActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        Thread thread = new Thread(() -> {
+            errorLabel.setText("Loading");
+            loginButton.setEnabled(false);
+        }
+        );
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        Thread thread2 = new Thread(() -> {
+            Employee empLogin;
+            try {
+                Database database = new Database();
+                empLogin = new Employee(empIDTF.getText());
+                empLogin.setPass(String.copyValueOf(loginPass.getPassword()));
+                employee = database.validateEmployee(empLogin);
+                errorLabel.setText("");
+                empIDTF.setText("");
+                loginPass.setText("");
+                CardLayout card = (CardLayout) parentPanel.getLayout();
+                card.show(parentPanel, "userInventoryManagement");
+
+            } catch (PasswordInvalidException | IllegalArgumentException | FileNotFoundException | SQLException e) {
+                errorLabel.setText(e.getMessage());
+            } finally {
+                loginButton.setEnabled(true);
+            }
+        }
+        );
+        thread2.start();
+    }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void empIDTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empIDTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_empIDTFActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        CardLayout card = (CardLayout) parentPanel.getLayout();
+        card.show(parentPanel, "landingPage");
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliButtonActionPerformed
+        CardLayout card = (CardLayout) parentPanel.getLayout();
+        card.show(parentPanel, "landingPage");
+    }//GEN-LAST:event_kembaliButtonActionPerformed
+
+    private void testButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testButtonActionPerformed
+        Thread thread = new Thread(() -> {
+            credErrorLabel.setText("Mengubungi...");
+            testButton.setEnabled(false);
+            saveButton.setEnabled(false);
+        });
+
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException ex) {
+            credErrorLabel.setText(ex.getMessage());
+        }
+
+        Thread thread1 = new Thread(() -> {
+            Connection connection = null;
+            try {
+                connection = DriverManager.getConnection(urlField.getText(), idField.getText(), String.copyValueOf(passwordField.getPassword()));
+                credErrorLabel.setText("Koneksi berhasil");
+            } catch (SQLException ex) {
+                credErrorLabel.setText(ex.getMessage());
+                System.out.println(ex.getMessage());
+            } finally {
+                testButton.setEnabled(true);
+                saveButton.setEnabled(true);
+
+                try {
+                    if (connection != null) connection.close();
+                } catch (SQLException ex) {
+                    errorLabel.setText(ex.getMessage());
+                }
+            }
+        });
+        thread1.start();
+    }//GEN-LAST:event_testButtonActionPerformed
+
+
+    private void urlFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urlFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_urlFieldActionPerformed
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        Thread thread = new Thread(() -> {
+            credErrorLabel.setText("Mengubungi...");
+            testButton.setEnabled(false);
+            saveButton.setEnabled(false);
+        });
+
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException ex) {
+            credErrorLabel.setText(ex.getMessage());
+        }
+
+        Thread thread1 = new Thread(() -> {
+            Connection connection = null;
+            try {
+                connection = DriverManager.getConnection(urlField.getText(), idField.getText(), String.copyValueOf(passwordField.getPassword()));
+                Database.saveCredentials(urlField.getText(), idField.getText(),String.copyValueOf(passwordField.getPassword()));;
+            } catch (SQLException ex) {
+                credErrorLabel.setText(ex.getMessage());
+                System.out.println(ex.getMessage());
+            } catch (IOException e) {
+                credErrorLabel.setText(e.getMessage());
+            } finally {
+                testButton.setEnabled(true);
+                saveButton.setEnabled(true);
+                try {
+                    if (connection != null) connection.close();
+                } catch (SQLException ex) {
+                    errorLabel.setText(ex.getMessage());
+                }
+            }
+        });
+        thread1.start();
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        refreshUserReturn();
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void refreshUserReturn() {
+        String[] columnNames = {"SKU", "Nama", "Satuan", "Tanggal Keluar", "Tanggal Kembali"};
+        Object[][] data = new Object[0][];
+        try {
+            data = userReturnData();
+        } catch (SQLException | FileNotFoundException e) {
+            userReturnErrorLabel.setText(e.getMessage());
+        }
+        userReturnTable.setModel(new DefaultTableModel(data, columnNames));
+    }
+    private void userReturnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnReturnActionPerformed
+        Thread thread = new Thread(() -> {
+            userReturnErrorLabel.setText("Loading...");
+            boolean enabled = false;
+            userReturnReturn.setEnabled(enabled);
+            refreshButton.setEnabled(enabled);
+            userReturnPrint.setEnabled(enabled);
+            findSKUButton.setEnabled(enabled);
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            userReturnErrorLabel.setText(e.getMessage());
+        }
+
+        Thread thread1 = new Thread(() -> {
+            int sku =(int) userReturnTable.getModel().getValueAt(userReturnTable.getSelectedRow(), 0);
+            Database database = new Database();
+            try {
+                Inventory inventory = database.findInventory(new Inventory(sku));
+                inventory.setPeminjam(null);
+                inventory.setTanggal_keluar(null);
+                inventory.setTanggal_kembali(null);
+                database.updateInventory(inventory);
+                refreshUserReturn();
+                userReturnErrorLabel.setText("Barang berhasil dikembalikan");
+            } catch (SQLException | FileNotFoundException e) {
+                userReturnErrorLabel.setText(e.getMessage());
+            } finally {
+                boolean enabled = true;
+                userReturnReturn.setEnabled(enabled);
+                refreshButton.setEnabled(enabled);
+                userReturnPrint.setEnabled(enabled);
+                findSKUButton.setEnabled(enabled);
+            }
+        });
+        thread1.start();
+    }//GEN-LAST:event_userReturnReturnActionPerformed
+
+    private Object[][] userReturnData() throws SQLException, FileNotFoundException {
+        Database database = new Database();
+        Object[][] data = null;
+            LinkedList<Inventory> list = database.getEmployeeInventory(employee);
+            data = new Object[list.size()][6];
+            ListIterator<Inventory> listIterator = list.listIterator();
+            int i = 0;
+            while(listIterator.hasNext()) {
+                Inventory iterator = listIterator.next();
+                Object[] objects = {
+                        iterator.getSKU(),
+                        iterator.getNama(),
+                        iterator.getSatuan(),
+                        iterator.getTanggal_keluar(),
+                        iterator.getTanggal_kembali()
+                };
+                data[i++] = objects;
+            }
+
+        return data;
+    }
     /**
      * @param args the command line arguments
      */
@@ -316,21 +796,16 @@ public class GUI extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -350,23 +825,44 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel adminEditRemove;
     private javax.swing.JPanel adminInventoryManagement;
     private javax.swing.JPanel adminReturn;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel credErrorLabel;
+    private javax.swing.JButton credentialsButton;
     private javax.swing.JPanel databaseCredentials;
+    private javax.swing.JTextField empIDTF;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JButton findSKUButton;
     private javax.swing.JTextField findSKUTF;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField idField;
+    private javax.swing.JButton inventoryLoginB;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton kembaliButton;
     private javax.swing.JPanel landingPage;
+    private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPage;
+    private javax.swing.JPasswordField loginPass;
     private javax.swing.JPanel parentPanel;
-    private javax.swing.JButton returnButton;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JScrollPane scrollPaneUserR;
+    private javax.swing.JButton testButton;
+    private javax.swing.JTextField urlField;
+    private javax.swing.JLabel urlLabel;
     private javax.swing.JPanel userCheckout;
     private javax.swing.JPanel userInventoryManagement;
     private javax.swing.JTabbedPane userInventoryTabs;
     private javax.swing.JPanel userReturn;
+    private javax.swing.JButton userReturnBack;
+    private javax.swing.JLabel userReturnErrorIcon;
+    private javax.swing.JLabel userReturnErrorLabel;
+    private javax.swing.JButton userReturnPrint;
+    private javax.swing.JButton userReturnReturn;
+    private javax.swing.JTable userReturnTable;
     // End of variables declaration//GEN-END:variables
 }

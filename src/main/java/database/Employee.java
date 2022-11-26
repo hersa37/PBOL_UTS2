@@ -11,7 +11,7 @@ public class Employee {
         this.setId(id);
     }
 
-    public Employee(String id, String nama, String pass) {
+    public Employee(String id, String nama, String pass) throws IllegalArgumentException{
         this.setId(id);
         this.setNama(nama);
         this.setPass(pass);
@@ -41,11 +41,11 @@ public class Employee {
         }
     }
 
-    String getPass(){
+    public String getPass(){
         return pass;
     }
 
-    void setPass(String pass) {
+    public void setPass(String pass) {
         this.pass = pass;
     }
 
