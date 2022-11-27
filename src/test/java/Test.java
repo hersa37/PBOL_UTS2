@@ -1,5 +1,6 @@
 import database.Database;
 import database.Employee;
+import database.Inventory;
 import database.PasswordInvalidException;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -41,8 +42,7 @@ public class Test {
 //		String name = "echa";
 //
 //		System.out.println(name.substring(0,2));
-		System.out.println(0f+0f
-		);
+		Inventory inventory = new Inventory(101,"Ex", 10001, null, null, null, null, null);
 
 	}
 }

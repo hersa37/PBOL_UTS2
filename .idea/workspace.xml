@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71872b82-6e2d-4368-a3bb-1bf95511ee64" name="Changes" comment="- Mayoritas fungsi untuk pengembalian user bekerja">
+    <list default="true" id="71872b82-6e2d-4368-a3bb-1bf95511ee64" name="Changes" comment="- Cleaned up">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Inventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/userInterface/GUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/userInterface/GUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/userInterface/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/userInterface/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Test.java" afterDir="false" />
@@ -118,7 +117,8 @@
       <workItem from="1669367900895" duration="15936000" />
       <workItem from="1669418890469" duration="10440000" />
       <workItem from="1669439612857" duration="6434000" />
-      <workItem from="1669502404231" duration="2065000" />
+      <workItem from="1669502404231" duration="2722000" />
+      <workItem from="1669533715071" duration="2163000" />
     </task>
     <task id="LOCAL-00001" summary="- Tambah password untuk Employee.java&#10;- Buat table employees&#10;- Password disimpan sebagai has menggunakan BCrypt&#10;- Rapikan method untuk akses database&#10;- Tambah method untuk tambah dan validasi employee saat login">
       <created>1669297320759</created>
@@ -148,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669426303833</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Cleaned up">
+      <created>1669505715544</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669505715544</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +178,8 @@
     <MESSAGE value="- Buat struktur dasar GUI" />
     <MESSAGE value="- Buat struktur dasar GUI&#10;- Tambah PDF struktur GUI" />
     <MESSAGE value="- Mayoritas fungsi untuk pengembalian user bekerja" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Mayoritas fungsi untuk pengembalian user bekerja" />
+    <MESSAGE value="- Cleaned up" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Cleaned up" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

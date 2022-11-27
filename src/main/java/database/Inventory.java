@@ -93,7 +93,7 @@ public class Inventory {
     }
     
     public void setSatuan(String Satuan) throws IllegalArgumentException {
-        if (Satuan.length() <= 10) {
+        if (Satuan == null || Satuan.length() <= 10) {
             this.Satuan = Satuan;
         } else {
             throw new IllegalArgumentException("Hanya 10 karakter");

@@ -111,8 +111,28 @@ public class GUI extends javax.swing.JFrame {
         adminInventoryManagement = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         adminReturn = new javax.swing.JPanel();
+        userReturnReturn1 = new javax.swing.JButton();
+        userReturnBack1 = new javax.swing.JButton();
+        userReturnPrint1 = new javax.swing.JButton();
+        refreshButton1 = new javax.swing.JButton();
+        scrollPaneUserR1 = new javax.swing.JScrollPane();
+        userReturnTable1 = new javax.swing.JTable();
+        findSKUButton1 = new javax.swing.JButton();
+        findSKUTF1 = new javax.swing.JTextField();
         adminCheckout = new javax.swing.JPanel();
         adminAdd = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        addSKUTF = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        addNamaTF = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        addHargaTF = new javax.swing.JTextField();
+        addTanggalTF = new javax.swing.JTextField();
+        addUnitTF = new javax.swing.JTextField();
+        addButton = new javax.swing.JButton();
+        adminAddBack = new javax.swing.JButton();
         adminEditRemove = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -490,15 +510,119 @@ public class GUI extends javax.swing.JFrame {
 
         parentPanel.add(userInventoryManagement, "userInventoryManagement");
 
+        userReturnReturn1.setText("Kembalikan");
+        userReturnReturn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnReturn1ActionPerformed(evt);
+            }
+        });
+
+        userReturnBack1.setText("Kembali");
+        userReturnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnBack1ActionPerformed(evt);
+            }
+        });
+
+        userReturnPrint1.setText("Cetak Nota");
+        userReturnPrint1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnPrint1ActionPerformed(evt);
+            }
+        });
+
+        refreshButton1.setText("Refresh");
+        refreshButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButton1ActionPerformed(evt);
+            }
+        });
+
+        userReturnTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "SKU", "Nama", "Satuan", "Tanggal Keluar", "Tanggal Kembali"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        userReturnTable1.setRowHeight(30);
+        userReturnTable1.getTableHeader().setReorderingAllowed(false);
+        scrollPaneUserR1.setViewportView(userReturnTable1);
+        if (userReturnTable1.getColumnModel().getColumnCount() > 0) {
+            userReturnTable1.getColumnModel().getColumn(0).setResizable(false);
+            userReturnTable1.getColumnModel().getColumn(1).setResizable(false);
+            userReturnTable1.getColumnModel().getColumn(2).setResizable(false);
+            userReturnTable1.getColumnModel().getColumn(3).setResizable(false);
+            userReturnTable1.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        findSKUButton1.setText("Cari SKU");
+        findSKUButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findSKUButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout adminReturnLayout = new javax.swing.GroupLayout(adminReturn);
         adminReturn.setLayout(adminReturnLayout);
         adminReturnLayout.setHorizontalGroup(
             adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 847, Short.MAX_VALUE)
+            .addGroup(adminReturnLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneUserR1, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminReturnLayout.createSequentialGroup()
+                        .addGroup(adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(adminReturnLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(userReturnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(adminReturnLayout.createSequentialGroup()
+                                .addGroup(adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(refreshButton1)
+                                    .addGroup(adminReturnLayout.createSequentialGroup()
+                                        .addComponent(findSKUButton1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(findSKUTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(userReturnPrint1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(userReturnReturn1))))
+                        .addGap(27, 27, 27)))
+                .addGap(24, 24, 24))
         );
         adminReturnLayout.setVerticalGroup(
             adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 378, Short.MAX_VALUE)
+            .addGroup(adminReturnLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(scrollPaneUserR1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userReturnReturn1)
+                    .addComponent(refreshButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(adminReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userReturnPrint1)
+                    .addComponent(findSKUButton1)
+                    .addComponent(findSKUTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(userReturnBack1)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Kembalikan", adminReturn);
@@ -516,15 +640,82 @@ public class GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Checkout", adminCheckout);
 
+        jLabel1.setText("SKU");
+
+        jLabel2.setText("Nama");
+
+        jLabel7.setText("Harga");
+
+        jLabel8.setText("Tanggal Masuk");
+
+        jLabel9.setText("Unit");
+
+        addButton.setText("Tambah");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+
+        adminAddBack.setText("Kembali");
+
         javax.swing.GroupLayout adminAddLayout = new javax.swing.GroupLayout(adminAdd);
         adminAdd.setLayout(adminAddLayout);
         adminAddLayout.setHorizontalGroup(
             adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 847, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminAddLayout.createSequentialGroup()
+                .addContainerGap(215, Short.MAX_VALUE)
+                .addGroup(adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(adminAddLayout.createSequentialGroup()
+                        .addGroup(adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addGap(83, 83, 83)
+                        .addGroup(adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addSKUTF)
+                            .addComponent(addNamaTF)
+                            .addComponent(addHargaTF)
+                            .addComponent(addTanggalTF)
+                            .addComponent(addUnitTF, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminAddLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(adminAddBack)
+                            .addComponent(addButton))))
+                .addGap(121, 121, 121))
         );
         adminAddLayout.setVerticalGroup(
             adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 378, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminAddLayout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addGroup(adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(addSKUTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(addNamaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(addHargaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(addTanggalTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(adminAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(addUnitTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addComponent(addButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(adminAddBack)
+                .addGap(46, 46, 46))
         );
 
         jTabbedPane1.addTab("Tambah", adminAdd);
@@ -801,6 +992,38 @@ public class GUI extends javax.swing.JFrame {
         loginButtonActionPerformed(evt);
     }//GEN-LAST:event_loginPassActionPerformed
 
+    private void userReturnReturn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnReturn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userReturnReturn1ActionPerformed
+
+    private void userReturnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnBack1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userReturnBack1ActionPerformed
+
+    private void userReturnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnPrint1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userReturnPrint1ActionPerformed
+
+    private void refreshButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshButton1ActionPerformed
+
+    private void findSKUButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findSKUButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findSKUButton1ActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        Inventory inventory = new Inventory(
+                Integer.parseInt(addSKUTF.getText()),
+                addNamaTF.getText(),
+                Integer.parseInt(addHargaTF.getText()),
+                Date.valueOf(addTanggalTF.getText()),
+                null,
+                null,
+                addUnitTF.getText(),
+                null);
+    }//GEN-LAST:event_addButtonActionPerformed
+
     private Object[][] userReturnData() throws SQLException, FileNotFoundException {
         Database database = new Database();
         Object[][] data = null;
@@ -853,7 +1076,14 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButton;
+    private javax.swing.JTextField addHargaTF;
+    private javax.swing.JTextField addNamaTF;
+    private javax.swing.JTextField addSKUTF;
+    private javax.swing.JTextField addTanggalTF;
+    private javax.swing.JTextField addUnitTF;
     private javax.swing.JPanel adminAdd;
+    private javax.swing.JButton adminAddBack;
     private javax.swing.JPanel adminCheckout;
     private javax.swing.JPanel adminEditRemove;
     private javax.swing.JPanel adminInventoryManagement;
@@ -865,13 +1095,20 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField empIDTF;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JButton findSKUButton;
+    private javax.swing.JButton findSKUButton1;
     private javax.swing.JTextField findSKUTF;
+    private javax.swing.JTextField findSKUTF1;
     private javax.swing.JTextField idField;
     private javax.swing.JButton inventoryLoginB;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton kembaliButton;
     private javax.swing.JPanel landingPage;
@@ -882,8 +1119,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton refreshButton;
+    private javax.swing.JButton refreshButton1;
     private javax.swing.JButton saveButton;
     private javax.swing.JScrollPane scrollPaneUserR;
+    private javax.swing.JScrollPane scrollPaneUserR1;
     private javax.swing.JButton testButton;
     private javax.swing.JTextField urlField;
     private javax.swing.JLabel urlLabel;
@@ -892,10 +1131,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane userInventoryTabs;
     private javax.swing.JPanel userReturn;
     private javax.swing.JButton userReturnBack;
+    private javax.swing.JButton userReturnBack1;
     private javax.swing.JLabel userReturnErrorIcon;
     private javax.swing.JLabel userReturnErrorLabel;
     private javax.swing.JButton userReturnPrint;
+    private javax.swing.JButton userReturnPrint1;
     private javax.swing.JButton userReturnReturn;
+    private javax.swing.JButton userReturnReturn1;
     private javax.swing.JTable userReturnTable;
+    private javax.swing.JTable userReturnTable1;
     // End of variables declaration//GEN-END:variables
 }
