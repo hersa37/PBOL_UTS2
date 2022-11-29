@@ -147,6 +147,12 @@ public class GUI extends javax.swing.JFrame {
         adminAddBack = new javax.swing.JButton();
         adminAddErrorLabel = new javax.swing.JLabel();
         adminEditRemove = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        adminRefresh = new javax.swing.JButton();
+        adminSku = new javax.swing.JButton();
+        adminTextField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -193,7 +199,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(inventoryLoginB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(credentialsButton)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
 
         parentPanel.add(landingPage, "landingPage");
@@ -269,7 +275,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(errorLabel))
                 .addGap(18, 18, 18)
                 .addComponent(backButton)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         parentPanel.add(loginPage, "loginPage");
@@ -730,6 +736,56 @@ public class GUI extends javax.swing.JFrame {
         jTabbedPane1.addTab("Tambah", adminAdd);
 
         adminEditRemove.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "SKU", "Nama", "Satuan", "Tanggal Masuk", "Tanggal Keluar", "Tanggal Kembali", "Harga"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable3);
+        if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(0).setResizable(false);
+            jTable3.getColumnModel().getColumn(1).setResizable(false);
+            jTable3.getColumnModel().getColumn(2).setResizable(false);
+            jTable3.getColumnModel().getColumn(3).setResizable(false);
+            jTable3.getColumnModel().getColumn(4).setResizable(false);
+            jTable3.getColumnModel().getColumn(5).setResizable(false);
+            jTable3.getColumnModel().getColumn(6).setResizable(false);
+        }
+
+        adminEditRemove.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 680, 250));
+
+        adminRefresh.setText("Refresh");
+        adminEditRemove.add(adminRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 90, -1));
+
+        adminSku.setText("Cari SKU");
+        adminEditRemove.add(adminSku, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 90, -1));
+        adminEditRemove.add(adminTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 120, -1));
+
+        jButton1.setText("jButton1");
+        adminEditRemove.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, -1, -1));
+
         jTabbedPane1.addTab("Ubah/Hapus", adminEditRemove);
 
         javax.swing.GroupLayout adminInventoryManagementLayout = new javax.swing.GroupLayout(adminInventoryManagement);
@@ -742,7 +798,7 @@ public class GUI extends javax.swing.JFrame {
         );
         adminInventoryManagementLayout.setVerticalGroup(
             adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 469, Short.MAX_VALUE)
             .addGroup(adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane1))
         );
@@ -1136,7 +1192,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel adminCheckout;
     private javax.swing.JPanel adminEditRemove;
     private javax.swing.JPanel adminInventoryManagement;
+    private javax.swing.JButton adminRefresh;
     private javax.swing.JPanel adminReturn;
+    private javax.swing.JButton adminSku;
+    private javax.swing.JTextField adminTextField;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel credErrorLabel;
     private javax.swing.JButton credentialsButton;
@@ -1153,6 +1212,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField findSKUTF3;
     private javax.swing.JTextField idField;
     private javax.swing.JButton inventoryLoginB;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1164,9 +1224,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JButton kembaliButton;
     private javax.swing.JPanel landingPage;
     private javax.swing.JButton loginButton;
