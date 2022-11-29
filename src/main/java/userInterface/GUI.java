@@ -104,6 +104,14 @@ public class GUI extends javax.swing.JFrame {
         userReturnErrorIcon = new javax.swing.JLabel();
         refreshButton = new javax.swing.JButton();
         userCheckout = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        findSKUButton2 = new javax.swing.JButton();
+        findSKUTF2 = new javax.swing.JTextField();
+        userReturnReturn2 = new javax.swing.JButton();
+        userReturnBack2 = new javax.swing.JButton();
+        refreshButton2 = new javax.swing.JButton();
+        userReturnPrint2 = new javax.swing.JButton();
         adminInventoryManagement = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         adminReturn = new javax.swing.JPanel();
@@ -116,6 +124,14 @@ public class GUI extends javax.swing.JFrame {
         findSKUButton1 = new javax.swing.JButton();
         findSKUTF1 = new javax.swing.JTextField();
         adminCheckout = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        refreshButton3 = new javax.swing.JButton();
+        findSKUButton3 = new javax.swing.JButton();
+        findSKUTF3 = new javax.swing.JTextField();
+        userReturnReturn3 = new javax.swing.JButton();
+        userReturnPrint3 = new javax.swing.JButton();
+        userReturnBack3 = new javax.swing.JButton();
         adminAdd = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         addSKUTF = new javax.swing.JTextField();
@@ -409,7 +425,7 @@ public class GUI extends javax.swing.JFrame {
                 userReturnReturnActionPerformed(evt);
             }
         });
-        userReturn.add(userReturnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 237, -1, -1));
+        userReturn.add(userReturnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 237, 100, -1));
 
         userReturnBack.setText("Kembali");
         userReturnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -440,6 +456,75 @@ public class GUI extends javax.swing.JFrame {
         userInventoryTabs.addTab("Kembalikan", userReturn);
 
         userCheckout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null}
+            },
+            new String [] {
+                "SKU", "Nama Barang", "Satuan"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        userCheckout.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 840, 220));
+
+        findSKUButton2.setText("Cari SKU");
+        findSKUButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findSKUButton2ActionPerformed(evt);
+            }
+        });
+        userCheckout.add(findSKUButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 274, -1, -1));
+        userCheckout.add(findSKUTF2, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 274, 116, -1));
+
+        userReturnReturn2.setText("Checkout");
+        userReturnReturn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnReturn2ActionPerformed(evt);
+            }
+        });
+        userCheckout.add(userReturnReturn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 237, 100, -1));
+
+        userReturnBack2.setText("Kembali");
+        userReturnBack2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnBack2ActionPerformed(evt);
+            }
+        });
+        userCheckout.add(userReturnBack2, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 311, 101, -1));
+
+        refreshButton2.setText("Refresh");
+        refreshButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButton2ActionPerformed(evt);
+            }
+        });
+        userCheckout.add(refreshButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 237, -1, -1));
+
+        userReturnPrint2.setText("Cetak Nota");
+        userReturnPrint2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnPrint2ActionPerformed(evt);
+            }
+        });
+        userCheckout.add(userReturnPrint2, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 274, 101, -1));
+
         userInventoryTabs.addTab("Checkout", userCheckout);
 
         javax.swing.GroupLayout userInventoryManagementLayout = new javax.swing.GroupLayout(userInventoryManagement);
@@ -537,6 +622,75 @@ public class GUI extends javax.swing.JFrame {
         jTabbedPane1.addTab("Kembalikan", adminReturn);
 
         adminCheckout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null}
+            },
+            new String [] {
+                "SKU", "Nama Barang", "Satuan"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        adminCheckout.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 840, 220));
+
+        refreshButton3.setText("Refresh");
+        refreshButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButton3ActionPerformed(evt);
+            }
+        });
+        adminCheckout.add(refreshButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 237, -1, -1));
+
+        findSKUButton3.setText("Cari SKU");
+        findSKUButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findSKUButton3ActionPerformed(evt);
+            }
+        });
+        adminCheckout.add(findSKUButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 274, -1, -1));
+        adminCheckout.add(findSKUTF3, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 274, 116, -1));
+
+        userReturnReturn3.setText("Checkout");
+        userReturnReturn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnReturn3ActionPerformed(evt);
+            }
+        });
+        adminCheckout.add(userReturnReturn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 237, 100, -1));
+
+        userReturnPrint3.setText("Cetak Nota");
+        userReturnPrint3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnPrint3ActionPerformed(evt);
+            }
+        });
+        adminCheckout.add(userReturnPrint3, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 274, 101, -1));
+
+        userReturnBack3.setText("Kembali");
+        userReturnBack3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userReturnBack3ActionPerformed(evt);
+            }
+        });
+        adminCheckout.add(userReturnBack3, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 311, 101, -1));
+
         jTabbedPane1.addTab("Checkout", adminCheckout);
 
         adminAdd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -877,6 +1031,46 @@ public class GUI extends javax.swing.JFrame {
         }
 	}//GEN-LAST:event_addButtonActionPerformed
 
+    private void findSKUButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findSKUButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findSKUButton2ActionPerformed
+
+    private void userReturnReturn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnReturn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userReturnReturn2ActionPerformed
+
+    private void userReturnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnBack2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userReturnBack2ActionPerformed
+
+    private void refreshButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshButton2ActionPerformed
+
+    private void userReturnPrint2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnPrint2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userReturnPrint2ActionPerformed
+
+    private void refreshButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshButton3ActionPerformed
+
+    private void findSKUButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findSKUButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findSKUButton3ActionPerformed
+
+    private void userReturnReturn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnReturn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userReturnReturn3ActionPerformed
+
+    private void userReturnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnPrint3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userReturnPrint3ActionPerformed
+
+    private void userReturnBack3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userReturnBack3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userReturnBack3ActionPerformed
+
 	private Object[][] userReturnData() throws SQLException, FileNotFoundException {
 		Database database = new Database();
 		Object[][] data = null;
@@ -951,8 +1145,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel errorLabel;
     private javax.swing.JButton findSKUButton;
     private javax.swing.JButton findSKUButton1;
+    private javax.swing.JButton findSKUButton2;
+    private javax.swing.JButton findSKUButton3;
     private javax.swing.JTextField findSKUTF;
     private javax.swing.JTextField findSKUTF1;
+    private javax.swing.JTextField findSKUTF2;
+    private javax.swing.JTextField findSKUTF3;
     private javax.swing.JTextField idField;
     private javax.swing.JButton inventoryLoginB;
     private javax.swing.JLabel jLabel1;
@@ -964,7 +1162,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JButton kembaliButton;
     private javax.swing.JPanel landingPage;
     private javax.swing.JButton loginButton;
@@ -975,6 +1177,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton refreshButton;
     private javax.swing.JButton refreshButton1;
+    private javax.swing.JButton refreshButton2;
+    private javax.swing.JButton refreshButton3;
     private javax.swing.JButton saveButton;
     private javax.swing.JScrollPane scrollPaneUserR;
     private javax.swing.JScrollPane scrollPaneUserR1;
@@ -987,12 +1191,18 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel userReturn;
     private javax.swing.JButton userReturnBack;
     private javax.swing.JButton userReturnBack1;
+    private javax.swing.JButton userReturnBack2;
+    private javax.swing.JButton userReturnBack3;
     private javax.swing.JLabel userReturnErrorIcon;
     private javax.swing.JLabel userReturnErrorLabel;
     private javax.swing.JButton userReturnPrint;
     private javax.swing.JButton userReturnPrint1;
+    private javax.swing.JButton userReturnPrint2;
+    private javax.swing.JButton userReturnPrint3;
     private javax.swing.JButton userReturnReturn;
     private javax.swing.JButton userReturnReturn1;
+    private javax.swing.JButton userReturnReturn2;
+    private javax.swing.JButton userReturnReturn3;
     private javax.swing.JTable userReturnTable;
     private javax.swing.JTable userReturnTable1;
     // End of variables declaration//GEN-END:variables
