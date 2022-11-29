@@ -44,11 +44,11 @@ public class Database {
 			i++;
 		}
 		Connection conn;
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			System.out.println(e.getMessage());
-		}
+//		try {
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//		} catch (ClassNotFoundException e) {
+//			System.out.println(e.getMessage());
+//		}
 		conn = DriverManager.getConnection(creds[0], creds[1], creds[2]);
 		/*
 		conn = null dihandle method yang panggil
