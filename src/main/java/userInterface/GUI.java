@@ -152,7 +152,10 @@ public class GUI extends javax.swing.JFrame {
         adminRefresh = new javax.swing.JButton();
         adminSku = new javax.swing.JButton();
         adminTextField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        adminEdit = new javax.swing.JButton();
+        adminRemove = new javax.swing.JButton();
+        adminCetak = new javax.swing.JButton();
+        adminKembaliButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -783,8 +786,17 @@ public class GUI extends javax.swing.JFrame {
         adminEditRemove.add(adminSku, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 90, -1));
         adminEditRemove.add(adminTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 120, -1));
 
-        jButton1.setText("jButton1");
-        adminEditRemove.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, -1, -1));
+        adminEdit.setText("Edit");
+        adminEditRemove.add(adminEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 80, -1));
+
+        adminRemove.setText("Remove");
+        adminEditRemove.add(adminRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 80, -1));
+
+        adminCetak.setText("Cetak");
+        adminEditRemove.add(adminCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 340, 80, -1));
+
+        adminKembaliButton.setText("Kembali");
+        adminEditRemove.add(adminKembaliButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 80, -1));
 
         jTabbedPane1.addTab("Ubah/Hapus", adminEditRemove);
 
@@ -1189,10 +1201,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel adminAdd;
     private javax.swing.JButton adminAddBack;
     private javax.swing.JLabel adminAddErrorLabel;
+    private javax.swing.JButton adminCetak;
     private javax.swing.JPanel adminCheckout;
+    private javax.swing.JButton adminEdit;
     private javax.swing.JPanel adminEditRemove;
     private javax.swing.JPanel adminInventoryManagement;
+    private javax.swing.JButton adminKembaliButton;
     private javax.swing.JButton adminRefresh;
+    private javax.swing.JButton adminRemove;
     private javax.swing.JPanel adminReturn;
     private javax.swing.JButton adminSku;
     private javax.swing.JTextField adminTextField;
@@ -1212,7 +1228,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField findSKUTF3;
     private javax.swing.JTextField idField;
     private javax.swing.JButton inventoryLoginB;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
