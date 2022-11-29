@@ -777,7 +777,7 @@ public class GUI extends javax.swing.JFrame {
             jTable3.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        adminEditRemove.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 680, 250));
+        adminEditRemove.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 790, 250));
 
         adminRefresh.setText("Refresh");
         adminEditRemove.add(adminRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 90, -1));
@@ -787,16 +787,16 @@ public class GUI extends javax.swing.JFrame {
         adminEditRemove.add(adminTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 120, -1));
 
         adminEdit.setText("Edit");
-        adminEditRemove.add(adminEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 80, -1));
+        adminEditRemove.add(adminEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 80, -1));
 
         adminRemove.setText("Remove");
-        adminEditRemove.add(adminRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 80, -1));
+        adminEditRemove.add(adminRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 310, 80, -1));
 
         adminCetak.setText("Cetak");
-        adminEditRemove.add(adminCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 340, 80, -1));
+        adminEditRemove.add(adminCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 340, 80, -1));
 
         adminKembaliButton.setText("Kembali");
-        adminEditRemove.add(adminKembaliButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 80, -1));
+        adminEditRemove.add(adminKembaliButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 370, 80, -1));
 
         jTabbedPane1.addTab("Ubah/Hapus", adminEditRemove);
 
