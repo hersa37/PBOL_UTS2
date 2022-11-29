@@ -7,10 +7,7 @@
     <list default="true" id="71872b82-6e2d-4368-a3bb-1bf95511ee64" name="Changes" comment="- add driver">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/userInterface/GUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/userInterface/GUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/userInterface/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/userInterface/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/userInterface/GUIlogin.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/userInterface/GUIlogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,23 +50,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/echa/.m2/repository/org/netbeans/external/AbsoluteLayout/RELEASE150&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.61494255&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;SQL Dialects&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/echa/.m2/repository/org/netbeans/external/AbsoluteLayout/RELEASE150",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.61494255",
+    "settings.editor.selected.configurable": "SQL Dialects"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.Database">
     <configuration name="Database" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="database.Database" />
@@ -137,7 +134,7 @@
       <workItem from="1669615909317" duration="599000" />
       <workItem from="1669634996680" duration="10000" />
       <workItem from="1669684848412" duration="882000" />
-      <workItem from="1669688061361" duration="516000" />
+      <workItem from="1669688061361" duration="1671000" />
     </task>
     <task id="LOCAL-00001" summary="- Tambah password untuk Employee.java&#10;- Buat table employees&#10;- Password disimpan sebagai has menggunakan BCrypt&#10;- Rapikan method untuk akses database&#10;- Tambah method untuk tambah dan validasi employee saat login">
       <created>1669297320759</created>
@@ -202,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669684991327</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="- add driver">
+      <created>1669688625693</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669688625694</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
