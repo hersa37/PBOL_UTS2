@@ -23,7 +23,7 @@ public class Database {
 		writer.write(url+"\n"+id+"\n"+pass);
 		writer.close();
 	}
-	public Connection getConnection() throws FileNotFoundException, SQLException, ClassNotFoundException {
+	public Connection getConnection() throws FileNotFoundException, SQLException {
 
         /*
         URL, user, dan password disimpan dalam file bernama credentials
@@ -44,7 +44,11 @@ public class Database {
 			i++;
 		}
 		Connection conn;
-                Class.forName("com.mysql.jdbc.Driver");
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 		conn = DriverManager.getConnection(creds[0], creds[1], creds[2]);
 		/*
 		conn = null dihandle method yang panggil

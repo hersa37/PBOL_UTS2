@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71872b82-6e2d-4368-a3bb-1bf95511ee64" name="Changes" comment="- Cleaned up" />
+    <list default="true" id="71872b82-6e2d-4368-a3bb-1bf95511ee64" name="Changes" comment="- Cleaned up">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,24 +41,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/echa/.m2/repository/org/netbeans/external/AbsoluteLayout/RELEASE150",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.61494255",
-    "settings.editor.selected.configurable": "SQL Dialects"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/echa/.m2/repository/org/netbeans/external/AbsoluteLayout/RELEASE150&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.61494255&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SQL Dialects&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.GUI">
+}</component>
+  <component name="RunManager" selected="Application.Database">
     <configuration name="Database" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="database.Database" />
       <module name="PBOL_UTS2" />
@@ -92,9 +94,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Database" />
         <item itemvalue="Application.GUI" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="Application.Database" />
       </list>
     </recent_temporary>
   </component>
@@ -119,7 +121,9 @@
       <workItem from="1669533715071" duration="2163000" />
       <workItem from="1669561433697" duration="674000" />
       <workItem from="1669595391076" duration="1015000" />
-      <workItem from="1669596593519" duration="2299000" />
+      <workItem from="1669596593519" duration="4413000" />
+      <workItem from="1669615909317" duration="599000" />
+      <workItem from="1669634996680" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="- Tambah password untuk Employee.java&#10;- Buat table employees&#10;- Password disimpan sebagai has menggunakan BCrypt&#10;- Rapikan method untuk akses database&#10;- Tambah method untuk tambah dan validasi employee saat login">
       <created>1669297320759</created>
@@ -170,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669598099335</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="- Cleaned up">
+      <created>1669599422922</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669599422922</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
