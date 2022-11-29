@@ -191,7 +191,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(inventoryLoginB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(credentialsButton)))
                     .addComponent(jLabel3))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         landingPageLayout.setVerticalGroup(
             landingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +202,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(inventoryLoginB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(credentialsButton)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         parentPanel.add(landingPage, "landingPage");
@@ -242,7 +242,7 @@ public class GUI extends javax.swing.JFrame {
         loginPageLayout.setHorizontalGroup(
             loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPageLayout.createSequentialGroup()
-                .addContainerGap(245, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(loginPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
@@ -278,7 +278,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(errorLabel))
                 .addGap(18, 18, 18)
                 .addComponent(backButton)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         parentPanel.add(loginPage, "loginPage");
@@ -329,7 +329,7 @@ public class GUI extends javax.swing.JFrame {
         databaseCredentialsLayout.setHorizontalGroup(
             databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, databaseCredentialsLayout.createSequentialGroup()
-                .addContainerGap(612, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(databaseCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(kembaliButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(testButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -557,7 +557,7 @@ public class GUI extends javax.swing.JFrame {
                 userReturnReturn1ActionPerformed(evt);
             }
         });
-        adminReturn.add(userReturnReturn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 247, -1, -1));
+        adminReturn.add(userReturnReturn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 247, 100, -1));
 
         userReturnBack1.setText("Kembali");
         userReturnBack1.addActionListener(new java.awt.event.ActionListener() {
@@ -657,7 +657,7 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        adminCheckout.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 840, 220));
+        adminCheckout.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 810, 220));
 
         refreshButton3.setText("Refresh");
         refreshButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -777,26 +777,26 @@ public class GUI extends javax.swing.JFrame {
             jTable3.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        adminEditRemove.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 680, 250));
+        adminEditRemove.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 800, 220));
 
         adminRefresh.setText("Refresh");
-        adminEditRemove.add(adminRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 90, -1));
+        adminEditRemove.add(adminRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 90, -1));
 
         adminSku.setText("Cari SKU");
         adminEditRemove.add(adminSku, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 90, -1));
         adminEditRemove.add(adminTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 120, -1));
 
         adminEdit.setText("Edit");
-        adminEditRemove.add(adminEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 80, -1));
+        adminEditRemove.add(adminEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, 80, -1));
 
         adminRemove.setText("Remove");
-        adminEditRemove.add(adminRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 80, -1));
+        adminEditRemove.add(adminRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, 80, -1));
 
         adminCetak.setText("Cetak");
-        adminEditRemove.add(adminCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 340, 80, -1));
+        adminEditRemove.add(adminCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 320, 80, -1));
 
         adminKembaliButton.setText("Kembali");
-        adminEditRemove.add(adminKembaliButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 80, -1));
+        adminEditRemove.add(adminKembaliButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 360, 80, -1));
 
         jTabbedPane1.addTab("Ubah/Hapus", adminEditRemove);
 
@@ -804,13 +804,13 @@ public class GUI extends javax.swing.JFrame {
         adminInventoryManagement.setLayout(adminInventoryManagementLayout);
         adminInventoryManagementLayout.setHorizontalGroup(
             adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 847, Short.MAX_VALUE)
+            .addGap(0, 844, Short.MAX_VALUE)
             .addGroup(adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane1))
         );
         adminInventoryManagementLayout.setVerticalGroup(
             adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
+            .addGap(0, 433, Short.MAX_VALUE)
             .addGroup(adminInventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane1))
         );
@@ -821,11 +821,11 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(parentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(parentPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

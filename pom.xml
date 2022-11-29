@@ -15,9 +15,9 @@
             <version>8.0.31</version>
         </dependency>
         <dependency>
-            <groupId>com.mariadb.jdbc</groupId>
+            <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
-            <version>3.2.0</version>
+            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.mindrot</groupId>
