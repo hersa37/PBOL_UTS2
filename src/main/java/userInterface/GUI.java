@@ -557,7 +557,7 @@ public class GUI extends javax.swing.JFrame {
                 userReturnReturn1ActionPerformed(evt);
             }
         });
-        adminReturn.add(userReturnReturn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 247, -1, -1));
+        adminReturn.add(userReturnReturn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 247, 100, -1));
 
         userReturnBack1.setText("Kembali");
         userReturnBack1.addActionListener(new java.awt.event.ActionListener() {
@@ -581,7 +581,7 @@ public class GUI extends javax.swing.JFrame {
                 refreshButton1ActionPerformed(evt);
             }
         });
-        adminReturn.add(refreshButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 247, -1, -1));
+        adminReturn.add(refreshButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 247, 80, -1));
 
         userReturnTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -787,16 +787,16 @@ public class GUI extends javax.swing.JFrame {
         adminEditRemove.add(adminTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 120, -1));
 
         adminEdit.setText("Edit");
-        adminEditRemove.add(adminEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 80, -1));
+        adminEditRemove.add(adminEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, 100, -1));
 
         adminRemove.setText("Remove");
-        adminEditRemove.add(adminRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 310, 80, -1));
+        adminEditRemove.add(adminRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 100, -1));
 
         adminCetak.setText("Cetak");
-        adminEditRemove.add(adminCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 340, 80, -1));
+        adminEditRemove.add(adminCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 100, -1));
 
         adminKembaliButton.setText("Kembali");
-        adminEditRemove.add(adminKembaliButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 370, 80, -1));
+        adminEditRemove.add(adminKembaliButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 100, -1));
 
         jTabbedPane1.addTab("Ubah/Hapus", adminEditRemove);
 
