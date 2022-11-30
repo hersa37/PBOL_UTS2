@@ -1,72 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
-  <component name="ChangeListManager">
-    <list default="true" id="71872b82-6e2d-4368-a3bb-1bf95511ee64" name="Changes" comment="- add driver">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-    </list>
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/database/Database.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/database/Employee.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/database/Inventory.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/userInterface/GUI.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2Hz0UPFnjZUBGMDGjUbYIypgWBh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/echa/.m2/repository/org/netbeans/external/AbsoluteLayout/RELEASE150",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.61494255",
-    "settings.editor.selected.configurable": "SQL Dialects"
-  }
-}]]></component>
   <component name="RunManager" selected="Application.Database">
     <configuration name="Database" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="database.Database" />
@@ -81,12 +14,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="userInterface.GUI" />
+    <configuration name="GUIV2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="trial.GUIV2" />
       <module name="PBOL_UTS2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="userInterface.*" />
+          <option name="PATTERN" value="trial.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -94,147 +27,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Test" />
-      <module name="PBOL_UTS2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Database" />
-        <item itemvalue="Application.GUI" />
-        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.GUIV2" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="71872b82-6e2d-4368-a3bb-1bf95511ee64" name="Changes" comment="" />
-      <created>1669272624025</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1669272624025</updated>
-      <workItem from="1669272626999" duration="340000" />
-      <workItem from="1669272978895" duration="16784000" />
-      <workItem from="1669300414752" duration="748000" />
-      <workItem from="1669332127063" duration="137000" />
-      <workItem from="1669334600313" duration="646000" />
-      <workItem from="1669340572189" duration="2119000" />
-      <workItem from="1669367900895" duration="15936000" />
-      <workItem from="1669418890469" duration="10440000" />
-      <workItem from="1669439612857" duration="6434000" />
-      <workItem from="1669502404231" duration="2722000" />
-      <workItem from="1669533715071" duration="2163000" />
-      <workItem from="1669561433697" duration="674000" />
-      <workItem from="1669595391076" duration="1015000" />
-      <workItem from="1669596593519" duration="4413000" />
-      <workItem from="1669615909317" duration="599000" />
-      <workItem from="1669634996680" duration="10000" />
-      <workItem from="1669684848412" duration="882000" />
-      <workItem from="1669688061361" duration="1671000" />
-    </task>
-    <task id="LOCAL-00001" summary="- Tambah password untuk Employee.java&#10;- Buat table employees&#10;- Password disimpan sebagai has menggunakan BCrypt&#10;- Rapikan method untuk akses database&#10;- Tambah method untuk tambah dan validasi employee saat login">
-      <created>1669297320759</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1669297320759</updated>
-    </task>
-    <task id="LOCAL-00002" summary="- Buat struktur dasar GUI">
-      <created>1669332237971</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1669332237971</updated>
-    </task>
-    <task id="LOCAL-00003" summary="- Buat struktur dasar GUI&#10;- Tambah PDF struktur GUI">
-      <created>1669334643494</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1669334643494</updated>
-    </task>
-    <task id="LOCAL-00004" summary="- Mayoritas fungsi untuk pengembalian user bekerja">
-      <created>1669426303833</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1669426303833</updated>
-    </task>
-    <task id="LOCAL-00005" summary="- Cleaned up">
-      <created>1669505715544</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1669505715544</updated>
-    </task>
-    <task id="LOCAL-00006" summary="- Cleaned up">
-      <created>1669561548750</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1669561548750</updated>
-    </task>
-    <task id="LOCAL-00007" summary="- Cleaned up">
-      <created>1669598099335</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1669598099335</updated>
-    </task>
-    <task id="LOCAL-00008" summary="- Cleaned up">
-      <created>1669599422922</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1669599422922</updated>
-    </task>
-    <task id="LOCAL-00009" summary="- add driver">
-      <created>1669684991327</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1669684991327</updated>
-    </task>
-    <task id="LOCAL-00010" summary="- add driver">
-      <created>1669688625693</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1669688625694</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="- Tambah password untuk Employee.java&#10;- Buat table employees&#10;- Password disimpan sebagai has menggunakan BCrypt&#10;- Rapikan method untuk akses database&#10;- Tambah method untuk tambah dan validasi employee saat login" />
-    <MESSAGE value="- Tambah method untuk add/remove inventory&#10;- Buat class untuk GUI" />
-    <MESSAGE value="- Buat struktur dasar GUI" />
-    <MESSAGE value="- Buat struktur dasar GUI&#10;- Tambah PDF struktur GUI" />
-    <MESSAGE value="- Mayoritas fungsi untuk pengembalian user bekerja" />
-    <MESSAGE value="- Cleaned up" />
-    <MESSAGE value="- add driver" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add driver" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

@@ -111,4 +111,18 @@ public class Inventory {
             throw new IllegalArgumentException("ID terlalu panjang");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "SKU=" + SKU +
+                ", Nama='" + Nama + '\'' +
+                ", Harga=" + Harga +
+                ", tanggal_masuk=" + tanggal_masuk +
+                ", tanggal_keluar=" + tanggal_keluar +
+                ", tanggal_kembali=" + tanggal_kembali +
+                ", Satuan='" + Satuan + '\'' +
+                ", Peminjam='" + Peminjam + '\'' +
+                '}';
+    }
 }

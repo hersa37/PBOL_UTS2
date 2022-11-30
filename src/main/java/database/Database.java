@@ -13,8 +13,9 @@ public class Database {
 //		Employee echa = new Employee("He000006", "Echa", "passwordku");
 		Database data = new Database();
 //		data.addEmployee(echa);
-		Employee echa = new Employee("He000006","","passwordku");
-		System.out.println(data.validateEmployee(echa));
+//		Employee echa = new Employee("He000006","","passwordku");
+//		System.out.println(data.validateEmployee(echa));
+		System.out.println(data.getFreeInventory());
 	}
 
 
