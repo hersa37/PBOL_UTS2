@@ -1,4 +1,4 @@
-package database;
+package pbol.uts2.database;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -9,21 +9,13 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Database {
-	public static void main(String[] args) throws SQLException, FileNotFoundException, PasswordInvalidException {
-//		Employee echa = new Employee("He000006", "Echa", "passwordku");
-		Database data = new Database();
-//		data.addEmployee(echa);
-//		Employee echa = new Employee("He000006","","passwordku");
-//		System.out.println(data.validateEmployee(echa));
-		System.out.println(data.getFreeInventory());
-	}
-
 
 	public static void saveCredentials(String url, String id, String pass) throws IOException {
 		Writer writer = new FileWriter("credentials");
-		writer.write(url+"\n"+id+"\n"+pass);
+		writer.write(url + "\n" + id + "\n" + pass);
 		writer.close();
 	}
+
 	public Connection getConnection() throws FileNotFoundException, SQLException {
 
         /*
@@ -58,11 +50,11 @@ public class Database {
 		return conn;
 	}
 
-	public boolean testConnection(String url, String id, String pass) throws SQLException{
+	public boolean testConnection(String url, String id, String pass) throws SQLException {
 		return (DriverManager.getConnection(url, id, pass) != null);
 	}
 
-	public void addInventory(Inventory inventory) throws SQLException, FileNotFoundException{
+	public void addInventory(Inventory inventory) throws SQLException, FileNotFoundException {
 		try (Connection connection = this.getConnection(); PreparedStatement statement = connection.prepareStatement("INSERT INTO Inventory (SKU, Nama, Harga, Tanggal_Masuk, Tanggal_Keluar, Tanggal_Kembali, Satuan, Peminjam) VALUE (?,?,?,?,?,?,?,?)")) {
 			statement.setInt(1, inventory.getSKU());
 			statement.setString(2, inventory.getNama());
@@ -70,11 +62,14 @@ public class Database {
 			statement.setDate(4, inventory.getTanggal_masuk());
 			statement.setDate(5, inventory.getTanggal_keluar());
 			statement.setDate(6, inventory.getTanggal_kembali());
+			statement.setString(7, inventory.getSatuan());
+			statement.setString(8, inventory.getPeminjam());
 			statement.executeUpdate();
 		}
 	}
-	public void updateInventory(Inventory inventory) throws SQLException, FileNotFoundException{
-		try (Connection connection = this.getConnection(); PreparedStatement statement = connection.prepareStatement("UPDATE Inventory SET Nama = ?, Harga = ?, Tanggal_Masuk = ?, Tanggal_Keluar = ?, Tanggal_Kembali = ?, Satuan = ?, Peminjam = ? WHERE SKU = ?" )) {
+
+	public void updateInventory(Inventory inventory) throws SQLException, FileNotFoundException {
+		try (Connection connection = this.getConnection(); PreparedStatement statement = connection.prepareStatement("UPDATE Inventory SET Nama = ?, Harga = ?, Tanggal_Masuk = ?, Tanggal_Keluar = ?, Tanggal_Kembali = ?, Satuan = ?, Peminjam = ? WHERE SKU = ?")) {
 			statement.setString(1, inventory.getNama());
 			statement.setInt(2, inventory.getHarga());
 			statement.setDate(3, inventory.getTanggal_masuk());
@@ -86,6 +81,62 @@ public class Database {
 			statement.executeUpdate();
 		}
 	}
+
+	public LinkedList<Inventory> checkoutInventory(Inventory inventory) throws SQLException, FileNotFoundException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		LinkedList<Inventory> list;
+		try {
+			connection = this.getConnection();
+			statement = connection.prepareStatement("UPDATE Inventory SET Tanggal_Keluar = ?, Tanggal_Kembali = ?, Peminjam = ? WHERE SKU = ?");
+			statement.setDate(1, inventory.getTanggal_keluar());
+			statement.setDate(2, inventory.getTanggal_kembali());
+			statement.setString(3, inventory.getPeminjam());
+			statement.setInt(4, inventory.getSKU());
+			statement.executeUpdate();
+
+			statement = connection.prepareStatement("SELECT * FROM Inventory WHERE Peminjam IS NULL");
+			resultSet = statement.executeQuery();
+			list = createInventoryList(resultSet);
+		} finally {
+			if (resultSet != null) resultSet.close();
+			if (statement != null) statement.close();
+			if (connection != null) connection.close();
+		}
+		return list;
+	}
+
+	public LinkedList<Inventory> returnInventory(Inventory inventory) throws SQLException, FileNotFoundException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		LinkedList<Inventory> list;
+		try {
+			String peminjam = inventory.getPeminjam();
+			inventory.setTanggal_keluar(null);
+			inventory.setTanggal_kembali(null);
+			inventory.setPeminjam(null);
+			connection = this.getConnection();
+			statement = connection.prepareStatement("UPDATE Inventory SET Tanggal_Keluar = ?, Tanggal_Kembali = ?, Peminjam = ? WHERE SKU = ?");
+			statement.setDate(1, inventory.getTanggal_keluar());
+			statement.setDate(2, inventory.getTanggal_kembali());
+			statement.setString(3, inventory.getPeminjam());
+			statement.setInt(4, inventory.getSKU());
+			statement.executeUpdate();
+
+			statement = connection.prepareStatement("SELECT * FROM Inventory WHERE Peminjam = ?");
+			statement.setString(1, peminjam);
+			resultSet = statement.executeQuery();
+			list = createInventoryList(resultSet);
+		} finally {
+			if (resultSet != null) resultSet.close();
+			if (statement != null) statement.close();
+			if (connection != null) connection.close();
+		}
+		return list;
+	}
+
 
 	public LinkedList<Inventory> getInventories() throws SQLException, FileNotFoundException {
 		Connection connection = null;
@@ -142,17 +193,17 @@ public class Database {
 		return list;
 	}
 
-	public Inventory findInventory(Inventory inventory) throws FileNotFoundException, SQLException{
+	public Inventory findInventory(Inventory inventory) throws FileNotFoundException, SQLException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		Inventory foundInventory = null;
 		try {
 			connection = this.getConnection();
-			statement  = connection.prepareStatement("SELECT * FROM Inventory WHERE SKU = ?");
-			statement.setInt(1,inventory.getSKU());
+			statement = connection.prepareStatement("SELECT * FROM Inventory WHERE SKU = ?");
+			statement.setInt(1, inventory.getSKU());
 			resultSet = statement.executeQuery();
-			while(resultSet.next()) {
+			while (resultSet.next()) {
 				foundInventory = new Inventory(
 						resultSet.getInt(1),
 						resultSet.getString(2),
@@ -172,12 +223,34 @@ public class Database {
 		return foundInventory;
 	}
 
-	public void deleteInventory(Inventory inventory) throws SQLException, FileNotFoundException{
+	public void deleteInventory(Inventory inventory) throws SQLException, FileNotFoundException {
 
-		try(Connection connection = this.getConnection(); PreparedStatement statement = connection.prepareStatement("DELETE FROM Inventory WHERE SKU = ?")) {
+		try (Connection connection = this.getConnection(); PreparedStatement statement = connection.prepareStatement("DELETE FROM Inventory WHERE SKU = ?")) {
 			statement.setInt(1, inventory.getSKU());
 			statement.executeUpdate();
 		}
+	}
+
+	public LinkedList<Inventory> removeInventory(Inventory inventory) throws FileNotFoundException, SQLException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		LinkedList<Inventory> list;
+		try {
+
+			connection = this.getConnection();
+			statement = connection.prepareStatement("DELETE FROM Inventory WHERE SKU = ?");
+			statement.setInt(1, inventory.getSKU());
+			statement.executeUpdate();
+
+			statement = connection.prepareStatement("SELECT * FROM Inventory");
+			resultSet = statement.executeQuery();
+			list = createInventoryList(resultSet);
+		} finally {
+			if (statement != null) statement.close();
+			if (connection != null) connection.close();
+		}
+		return list;
 	}
 
 	private LinkedList<Inventory> createInventoryList(ResultSet resultSet) throws SQLException {
@@ -197,7 +270,7 @@ public class Database {
 		return list;
 	}
 
-	public void addEmployee(Employee employee) throws SQLException, FileNotFoundException{
+	public void addEmployee(Employee employee) throws SQLException, FileNotFoundException {
 		try (Connection connection = this.getConnection(); PreparedStatement statement = connection.prepareStatement("INSERT INTO employees (id, name, password) values (?,?,?)")) {
 			statement.setString(1, employee.getId());
 			statement.setString(2, employee.getNama());
@@ -206,7 +279,7 @@ public class Database {
 		}
 	}
 
-	public Employee validateEmployee(Employee employee) throws PasswordInvalidException, SQLException, FileNotFoundException{
+	public Employee validateEmployee(Employee employee) throws PasswordInvalidException, SQLException, FileNotFoundException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -214,11 +287,11 @@ public class Database {
 		try {
 			connection = this.getConnection();
 			statement = connection.prepareStatement("SELECT * FROM employees WHERE id = ?");
-			statement.setString(1,employee.getId());
+			statement.setString(1, employee.getId());
 			resultSet = statement.executeQuery();
 
 			while (resultSet.next()) {
-				if(!BCrypt.checkpw(employee.getPass(), resultSet.getString(3))) {
+				if (!BCrypt.checkpw(employee.getPass(), resultSet.getString(3))) {
 					throw new PasswordInvalidException();
 				}
 				employee.setPass(null);

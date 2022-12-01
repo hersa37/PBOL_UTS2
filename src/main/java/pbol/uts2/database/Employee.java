@@ -1,4 +1,4 @@
-package database;
+package pbol.uts2.database;
 
 import org.mindrot.jbcrypt.BCrypt;
 
