@@ -5,11 +5,15 @@ import pbol.uts2.database.Inventory;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
+/**
+ * Table yang digunakan untuk {@link pbol.uts2.guiComponents.panels.TabledPanel}
+ */
 public class InventoryTable extends JTable {
 	Object[][] data;
 	String[] columnNames;
@@ -21,6 +25,14 @@ public class InventoryTable extends JTable {
 		setDefaultRenderer(Object.class, tableCellRenderer(dateCol));
 	}
 
+	/**
+	 * Method untuk menentukan tampilan table. Row yang tanggal kembalinya terlewat akan diwarnai merah. Row yang dipilih
+	 * akan diwarnai biru.
+	 *
+	 * @param dateCol kolom tanggal kembali
+	 * @return format table
+	 * @see DefaultTableCellRenderer
+	 */
 	private DefaultTableCellRenderer tableCellRenderer(int dateCol) {
 		return new DefaultTableCellRenderer() {
 			public Component getTableCellRendererComponent(JTable table, Object object, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -47,6 +59,14 @@ public class InventoryTable extends JTable {
 		};
 	}
 
+	/**
+	 * Method untuk menentukan isi table. Operasi yang dilakukan ditentukan oleh jumlah kolom.
+	 *
+	 * @param inventories Daftar inventory yang akan ditampilkan
+	 * @see ListIterator
+	 * @see JTable#setModel(TableModel)
+	 * @see DefaultTableModel
+	 */
 	public void setData(LinkedList<Inventory> inventories) {
 		data = new Object[inventories.size()][columnNames.length];
 		ListIterator<Inventory> listIterator = inventories.listIterator();
@@ -96,10 +116,18 @@ public class InventoryTable extends JTable {
 		this.setModel(new DefaultTableModel(data, columnNames));
 	}
 
+	/**
+	 * Method untuk mendapatkan SKU dari baris yang dipilih
+	 *
+	 * @return nomor SKU
+	 */
 	public int getSKUValue() {
 		return (int) getModel().getValueAt(getSelectedRow(), 0);
 	}
 
+	/**
+	 * Menghapus isi table
+	 */
 	public void resetTable() {
 		setData(new LinkedList<>());
 	}

@@ -10,11 +10,25 @@ import java.io.FileNotFoundException;
 import java.sql.Date;
 import java.sql.SQLException;
 
+/**
+ * Panel yang berisikan halaman-halaman yang dapat digunakan oleh admin. Panel sendiri menggunakan {@link GridLayout} untuk menyimpan
+ * objek {@link JTabbedPane} yang nanti akan menyimpan panel-panel operasi.
+ * <p>
+ * Terdapat 4 tab yang dapat ditampilkan:
+ * - Return
+ * - Checkout
+ * - Add
+ * - Remove
+ * Return, checkout, dan remove dibuat berdasarkan {@link TabledPanel}, di mana yang membuatnya berbeda adalah nama per kolom.
+ * Jumlah kolom akan menentukan panel tersebut akan beroperasi seperti apa
+ * <p>
+ * Add berisi form untuk menambahkan barang ke database.
+ */
 public class AdminPanel extends JPanel {
 
 	public AdminPanel(ParentPanel parentPanel) {
 		super();
-		setLayout(new GridLayout(0,1));
+		setLayout(new GridLayout(0, 1));
 		JTabbedPane adminTab = new JTabbedPane();
 		add(adminTab);
 
@@ -29,16 +43,24 @@ public class AdminPanel extends JPanel {
 		JPanel addInv = addPanel(parentPanel);
 		adminTab.addTab("Add", addInv);
 
-		String[] removeColumn = {"SKU","Nama", "Harga", "Tanggal_Masuk", "Tanggal_Keluar", "Tanggal_Kembali", "Satuan", "Peminjam"};
+		String[] removeColumn = {"SKU", "Nama", "Harga", "Tanggal_Masuk", "Tanggal_Keluar", "Tanggal_Kembali", "Satuan", "Peminjam"};
 		TabledPanel removeTab = new TabledPanel(removeColumn, 5, parentPanel);
 		adminTab.add("Remove", removeTab);
 	}
 
-	private JPanel addPanel(ParentPanel parentPanel){
+	/**
+	 * Panel untuk tab "Add". Akan memanggil method {@link Database#addInventory(Inventory)} dengan data yang didapat dari
+	 * masing-masing text field.
+	 *
+	 * @param parentPanel : panel induk
+	 * @return panel yang sudah diatur.
+	 */
+	private JPanel addPanel(ParentPanel parentPanel) {
 		JPanel addInv = new JPanel();
 		SpringLayout layout = new SpringLayout();
 		addInv.setLayout(layout);
 
+		//SKU label dan text field
 		JLabel sku = new JLabel("SKU");
 		layout.putConstraint(SpringLayout.WEST, sku, 300, SpringLayout.WEST, addInv);
 		layout.putConstraint(SpringLayout.NORTH, sku, 100, SpringLayout.NORTH, addInv);
@@ -50,6 +72,7 @@ public class AdminPanel extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, skuTF, -300, SpringLayout.EAST, addInv);
 		addInv.add(skuTF);
 
+		//Nama label dan text field
 		JLabel nama = new JLabel("Nama");
 		layout.putConstraint(SpringLayout.NORTH, nama, 10, SpringLayout.SOUTH, skuTF);
 		layout.putConstraint(SpringLayout.WEST, nama, 0, SpringLayout.WEST, sku);
@@ -61,6 +84,7 @@ public class AdminPanel extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, namaTF, 0, SpringLayout.EAST, skuTF);
 		addInv.add(namaTF);
 
+		//Harga label dan text field
 		JLabel harga = new JLabel("Harga");
 		layout.putConstraint(SpringLayout.NORTH, harga, 10, SpringLayout.SOUTH, namaTF);
 		layout.putConstraint(SpringLayout.WEST, harga, 0, SpringLayout.WEST, sku);
@@ -72,6 +96,7 @@ public class AdminPanel extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, hargaTF, 0, SpringLayout.EAST, skuTF);
 		addInv.add(hargaTF);
 
+		//Satuan label dan text field
 		JLabel satuan = new JLabel("Satuan");
 		layout.putConstraint(SpringLayout.NORTH, satuan, 10, SpringLayout.SOUTH, hargaTF);
 		layout.putConstraint(SpringLayout.WEST, satuan, 0, SpringLayout.WEST, sku);
@@ -111,7 +136,7 @@ public class AdminPanel extends JPanel {
 					null);
 			Database database = new Database();
 			try {
-				database.addInventory(inventory);
+				database.addInventory(inventory);       //Kalau SKU tidak memenuhi, maka akan melemparkan exception
 				errorLabel.setText("Berhasil memasukkan barang.");
 				skuTF.setText("");
 				namaTF.setText("");

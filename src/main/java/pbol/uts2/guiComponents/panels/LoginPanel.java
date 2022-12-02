@@ -9,8 +9,12 @@ import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
+/**
+ * Panel untuk masuk ke inventory management
+ */
 public class LoginPanel extends JPanel {
 	private final JLabel errorLabel;
+
 	public LoginPanel(ParentPanel parentPanel) {
 		super();
 		SpringLayout layout = new SpringLayout();
@@ -32,6 +36,10 @@ public class LoginPanel extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, employeePass, 0, SpringLayout.WEST, employeeId);
 		add(employeePass);
 
+		/*
+		Password field membuat yang tertulis tidak dapat dilihat. Diberi actionListener agar saat pencet 'enter' dapat
+		login
+		 */
 		JPasswordField passwordField = new JPasswordField();
 		layout.putConstraint(SpringLayout.WEST, passwordField, 0, SpringLayout.WEST, idTF);
 		layout.putConstraint(SpringLayout.NORTH, passwordField, 40, SpringLayout.SOUTH, employeeId);
@@ -39,6 +47,7 @@ public class LoginPanel extends JPanel {
 		passwordField.addActionListener(actionEvent -> login(parentPanel, idTF, passwordField));
 		add(passwordField);
 
+		//Label untuk menampilkan pesan-pesan
 		errorLabel = new JLabel("");
 		layout.putConstraint(SpringLayout.WEST, errorLabel, 0, SpringLayout.WEST, passwordField);
 		layout.putConstraint(SpringLayout.EAST, errorLabel, 0, SpringLayout.EAST, passwordField);
@@ -49,7 +58,7 @@ public class LoginPanel extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, loginButton, -150, SpringLayout.EAST, this);
 		layout.putConstraint(SpringLayout.SOUTH, loginButton, -120, SpringLayout.SOUTH, this);
 		layout.putConstraint(SpringLayout.WEST, loginButton, 30, SpringLayout.EAST, idTF);
-		loginButton.addActionListener(actionEvent -> login(parentPanel,idTF, passwordField));
+		loginButton.addActionListener(actionEvent -> login(parentPanel, idTF, passwordField));
 		add(loginButton);
 
 		LandingButton landingButton = new LandingButton(parentPanel);
@@ -59,7 +68,31 @@ public class LoginPanel extends JPanel {
 		add(landingButton);
 	}
 
-	private void login(ParentPanel parentPanel, JTextField id, JPasswordField pass){
+	/**
+	 * Method untuk dipanggil Action Listener. ID dan password diambil dari text field. Format ID divalidasi menggunakan
+	 * class Employee, di mana exception akan dilemparkan jika tidak sesuai format. ID dan password lalu divalidasi
+	 * dengan membandingkannya dengan database. Bila terjadi ketidaksamaan, maka exception akan dilemparkan. Saat semua
+	 * cocok, maka method validateEmployee() akan mengembalikan objek employee yang akan disimpan di parent panel.
+	 * <p>
+	 * Terdapat 2 jenis panel yang dapat ditampilkan saat login berhasil:
+	 * - user
+	 * - admin
+	 * Panel ditampilkan berdasarkan awalan ID. Jika diawali dengan "Ma", maka masuk ke panel admin. Selain itu, ke panel
+	 * user.
+	 * <p>
+	 * Menggunakan thread agar tulisan "Connecting..." dapat ditampilkan selama password divalidasi. Dibutuhkan karena
+	 * operasi dalam Action Event dilakukan dalam satu blok sebelum hasil akhirnya ditampilkan, sehingga tulisan
+	 * "Connecting..." tidak akan ditampilkan hingga akhir, jadi tidak akan sempat ditampilkan sebelum pesan berikutnya
+	 * ditampilkan.
+	 *
+	 * @param parentPanel parent panel semua komponen
+	 * @param id          employee
+	 * @param pass        employee
+	 */
+	private void login(ParentPanel parentPanel, JTextField id, JPasswordField pass) {
+		/*
+
+		 */
 		Thread thread = new Thread(() -> errorLabel.setText("Connecting..."));
 		thread.start();
 		try {
@@ -75,14 +108,13 @@ public class LoginPanel extends JPanel {
 				errorLabel.setText("");
 				id.setText("");
 				pass.setText("");
-				if(parentPanel.getEmployee().getId().startsWith("Ma")) {
+				if (parentPanel.getEmployee().getId().startsWith("Ma")) {
 					parentPanel.showPanel("adminPanel");
 				} else {
 					parentPanel.showPanel("userPanel");
 				}
-			} catch (SQLException | FileNotFoundException | PasswordInvalidException | IllegalArgumentException e){
+			} catch (SQLException | FileNotFoundException | PasswordInvalidException | IllegalArgumentException e) {
 				errorLabel.setText(e.getMessage());
-				System.out.println(e.getMessage());
 			} catch (NullPointerException e) {
 				errorLabel.setText("User tidak ditemukan");
 			}

@@ -7,12 +7,21 @@ import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Panel berisi operasi untuk menghubungkan aplikasi ke database. Terdapat 2 operasi utama yang bisa dilakukan:
+ * - Test
+ * - Simpan koneksi.
+ * Test hanya mencoba koneksi ke database berdasarkan URL, ID, dan password yang diberikan tanpa menyimpan koneksinya
+ * <p>
+ * Simpan koneksi melakukan pengecekan apakah detail yang dimasukkan valid, lalu menyimpannya jika memang valid.
+ */
 public class ConnectionPanel extends JPanel {
 	public ConnectionPanel(ParentPanel parentPanel) {
 		super();
 		SpringLayout layout = new SpringLayout();
 		setLayout(layout);
 
+		//URL label dan TextField
 		JLabel url = new JLabel("URL");
 		layout.putConstraint(SpringLayout.NORTH, url, 120, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, url, 250, SpringLayout.WEST, this);
@@ -24,6 +33,7 @@ public class ConnectionPanel extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, urlTF, -250, SpringLayout.EAST, this);
 		add(urlTF);
 
+		//ID label dan text field
 		JLabel userID = new JLabel("User ID");
 		layout.putConstraint(SpringLayout.NORTH, userID, 15, SpringLayout.SOUTH, urlTF);
 		layout.putConstraint(SpringLayout.WEST, userID, 0, SpringLayout.WEST, url);
@@ -35,6 +45,7 @@ public class ConnectionPanel extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, userIDTF, 0, SpringLayout.EAST, urlTF);
 		add(userIDTF);
 
+		//Password label dan password field
 		JLabel pass = new JLabel("Password");
 		layout.putConstraint(SpringLayout.NORTH, pass, 15, SpringLayout.SOUTH, userIDTF);
 		layout.putConstraint(SpringLayout.WEST, pass, 0, SpringLayout.WEST, url);
@@ -42,10 +53,11 @@ public class ConnectionPanel extends JPanel {
 
 		JPasswordField passwordField = new JPasswordField();
 		layout.putConstraint(SpringLayout.NORTH, passwordField, 0, SpringLayout.NORTH, pass);
-		layout.putConstraint(SpringLayout.EAST, passwordField, 0, SpringLayout.EAST,userIDTF );
+		layout.putConstraint(SpringLayout.EAST, passwordField, 0, SpringLayout.EAST, userIDTF);
 		layout.putConstraint(SpringLayout.WEST, passwordField, 0, SpringLayout.WEST, userIDTF);
 		add(passwordField);
 
+		//Label untuk menampilkan exception
 		JLabel errorLabel = new JLabel("");
 		layout.putConstraint(SpringLayout.NORTH, errorLabel, 10, SpringLayout.SOUTH, passwordField);
 		layout.putConstraint(SpringLayout.WEST, errorLabel, 0, SpringLayout.WEST, passwordField);
@@ -72,11 +84,11 @@ public class ConnectionPanel extends JPanel {
 				errorLabel.setText(e.getMessage());
 			}
 
-			Thread thread1 = new Thread(() ->{
+			Thread thread1 = new Thread(() -> {
 				Database database = new Database();
 				try {
-					database.testConnection(urlTF.getText(),userIDTF.getText(), String.valueOf(passwordField.getPassword()));
-					database.saveCredentials(urlTF.getText(),userIDTF.getText(),  String.valueOf(passwordField.getPassword()));
+					database.testConnection(urlTF.getText(), userIDTF.getText(), String.valueOf(passwordField.getPassword()));
+					database.saveCredentials(urlTF.getText(), userIDTF.getText(), String.valueOf(passwordField.getPassword()));
 					errorLabel.setText("Berhasil menyimpan koneksi");
 				} catch (SQLException | IOException e) {
 					errorLabel.setText(e.getMessage());

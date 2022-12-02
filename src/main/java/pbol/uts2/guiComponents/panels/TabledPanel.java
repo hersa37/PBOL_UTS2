@@ -15,7 +15,15 @@ import java.io.IOException;
 import java.io.Writer;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.LinkedList;
 
+/**
+ * Panel yang mengandung {@link InventoryTable} dan komponen-komponen lain untuk Return, Checkout, dan Remove. Pembedaannya akan ditentukan
+ * jumlah kolom yang dimasukkan saat instansiasi.
+ *
+ * @see AdminPanel
+ * @see UserPanel
+ */
 public class TabledPanel extends JTable {
 
 	private InventoryTable table;
@@ -49,13 +57,16 @@ public class TabledPanel extends JTable {
 				errorLabel.setText(e.getMessage());
 			}
 
+			/*
+			Penentuan fungsi tombol ditentukan oleh fungsi panel
+			 */
 			Thread thread1 = new Thread(() -> {
 				Database database = new Database();
 				try {
 					switch (columnNames.length) {
-						case 3 -> table.setData(database.getFreeInventory());
-						case 5 -> table.setData(database.getEmployeeInventory(parentPanel.getEmployee()));
-						case 8 -> table.setData(database.getInventories());
+						case 3 -> table.setData(database.getFreeInventory());   //Checkout
+						case 5 -> table.setData(database.getEmployeeInventory(parentPanel.getEmployee())); //Return
+						case 8 -> table.setData(database.getInventories());     //Remove
 					}
 					errorLabel.setText("");
 				} catch (Exception e) {
@@ -67,6 +78,9 @@ public class TabledPanel extends JTable {
 		});
 		add(refreshButton);
 
+		/*
+		Fungsi tombol ditentukan oleh jumlah kolom
+		 */
 		JButton button = new JButton();
 		switch (columnNames.length) {
 			case 3 -> {
@@ -113,7 +127,7 @@ public class TabledPanel extends JTable {
 		layout.putConstraint(SpringLayout.EAST, printButton, 0, SpringLayout.EAST, landingButton);
 		layout.putConstraint(SpringLayout.WEST, printButton, 0, SpringLayout.WEST, landingButton);
 		layout.putConstraint(SpringLayout.SOUTH, printButton, -10, SpringLayout.NORTH, landingButton);
-		printButton.addActionListener(actionEvent -> toFile(parentPanel.getEmployee(), button));
+		printButton.addActionListener(actionEvent -> toFile(parentPanel.getEmployee(), button, skuTF.getText()));
 		add(printButton);
 
 		//Button
@@ -123,6 +137,17 @@ public class TabledPanel extends JTable {
 		add(button);
 	}
 
+	/**
+	 * Method yang dipanggil oleh button jika class dibuat sebagai panel Checkout.
+	 * <p>
+	 * Method meng-update database menggunakan {@link Database#checkoutInventory(Inventory)} dan juga mengupdate table
+	 * menggunakan {@link InventoryTable#setData(LinkedList)} berdasarkan return dari checkout.
+	 * <p>
+	 * Checkout dilakukan dengan mengubah tanggal keluar menjadi hari saat checkout dilakukan, tanggal kembali menjadi
+	 * 14 hari setelah tanggak keluar, dan peminjam menjadi objek employee yang disimpan di parent panel.
+	 *
+	 * @param parentPanel parent panel
+	 */
 	private void checkoutButton(ParentPanel parentPanel) {
 		Thread thread = new Thread(() -> errorLabel.setText("Loading..."));
 		thread.start();
@@ -151,6 +176,12 @@ public class TabledPanel extends JTable {
 		thread1.start();
 	}
 
+	/**
+	 * Method yang dipanggil oleh button saat class dibuat sebagai panel return. Method menggunakan {@link Database#returnInventory(Inventory)}
+	 * untuk mengupdate database.
+	 *
+	 * @param parentPanel
+	 */
 	private void returnButton(ParentPanel parentPanel) {
 		Thread thread = new Thread(() -> errorLabel.setText("Loading..."));
 		thread.start();
@@ -163,7 +194,7 @@ public class TabledPanel extends JTable {
 			Database database = new Database();
 			int sku;
 			try {
-				sku = table.getSKUValue();
+				sku = table.getSKUValue();      //Mengambil SKU dari tabel
 			} catch (ArrayIndexOutOfBoundsException e) {
 				errorLabel.setText("Pilih barang dahulu.");
 				return;
@@ -180,6 +211,10 @@ public class TabledPanel extends JTable {
 		thread1.start();
 	}
 
+	/**
+	 * Method menghapus record dari database dengan memanggil {@link Database#removeInventory(Inventory)} dengan parameter
+	 * Inventory yang berisi sku yang dihapus.
+	 */
 	private void removeButton() {
 		Thread thread = new Thread(() -> errorLabel.setText("Loading..."));
 		thread.start();
@@ -202,6 +237,15 @@ public class TabledPanel extends JTable {
 		thread1.start();
 	}
 
+	/**
+	 * Method untuk hanya menampilkan record dengan SKU yang sama dengan yang dicari. Dilakukan dengan
+	 * meng-update TableModel dari table.
+	 *
+	 * @param tf text field SKU
+	 * @see TableModel
+	 * @see TableRowSorter
+	 * @see RowFilter
+	 */
 	private void findSKU(JTextField tf) {
 		TableRowSorter<TableModel> filter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(filter);
@@ -213,7 +257,16 @@ public class TabledPanel extends JTable {
 		}
 	}
 
-	private void toFile(Employee employee, JButton button) {
+	/**
+	 * Method untuk mencetak isi table ke sebuah file.
+	 *
+	 * @param employee  sesi ini
+	 * @param button    untuk menentukan nama file
+	 * @param skuFilter untuk memperjelas apa saja yang ditampilkan.
+	 * @see Employee
+	 * @see Writer
+	 */
+	private void toFile(Employee employee, JButton button, String skuFilter) {
 		Thread thread = new Thread(() -> errorLabel.setText("Saving..."));
 		thread.start();
 		try {
@@ -224,9 +277,11 @@ public class TabledPanel extends JTable {
 
 		Thread thread1 = new Thread(() -> {
 			try {
-				String path = "printout_" + button.getText() + "_" + employee.getId() + "_" + LocalDate.now();
+				String path = "printout_" + button.getText() + "_" + employee.getId() + "_" + LocalDate.now() + ".txt";
 				Writer output = new FileWriter(path);
-				StringBuilder string = new StringBuilder("|");
+				StringBuilder string = new StringBuilder();
+				string.append(employee).append("\n").append("SKU Filter : ").append(skuFilter);
+				string.append("\n|");
 				for (int i = 0; i < table.getColumnCount(); i++) {
 					string.append(String.format(" %15s |", table.getColumnName(i)));
 				}
