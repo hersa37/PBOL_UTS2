@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: pbol.uts2.GUIV2
+Class-Path: mariadb-java-client-3.1.0.jar
+

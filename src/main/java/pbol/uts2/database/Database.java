@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class Database {
 
-	public static void saveCredentials(String url, String id, String pass) throws IOException {
+	public void saveCredentials(String url, String id, String pass) throws IOException {
 		Writer writer = new FileWriter("credentials");
 		writer.write(url + "\n" + id + "\n" + pass);
 		writer.close();
@@ -50,8 +50,8 @@ public class Database {
 		return conn;
 	}
 
-	public boolean testConnection(String url, String id, String pass) throws SQLException {
-		return (DriverManager.getConnection(url, id, pass) != null);
+	public void testConnection(String url, String id, String pass) throws SQLException {
+		DriverManager.getConnection(url, id, pass).close();
 	}
 
 	public void addInventory(Inventory inventory) throws SQLException, FileNotFoundException {

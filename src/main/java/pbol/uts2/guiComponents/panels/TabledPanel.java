@@ -10,7 +10,6 @@ import javax.swing.*;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -114,7 +113,7 @@ public class TabledPanel extends JTable {
 		layout.putConstraint(SpringLayout.EAST, printButton, 0, SpringLayout.EAST, landingButton);
 		layout.putConstraint(SpringLayout.WEST, printButton, 0, SpringLayout.WEST, landingButton);
 		layout.putConstraint(SpringLayout.SOUTH, printButton, -10, SpringLayout.NORTH, landingButton);
-		printButton.addActionListener(actionEvent -> toFile(parentPanel.getEmployee()));
+		printButton.addActionListener(actionEvent -> toFile(parentPanel.getEmployee(), button));
 		add(printButton);
 
 		//Button
@@ -125,44 +124,82 @@ public class TabledPanel extends JTable {
 	}
 
 	private void checkoutButton(ParentPanel parentPanel) {
-		Database database = new Database();
-		int sku = table.getSKUValue();
+		Thread thread = new Thread(() -> errorLabel.setText("Loading..."));
+		thread.start();
 		try {
-			Inventory inventory = new Inventory(sku);
-			Date currentDate = new Date(System.currentTimeMillis());
-			LocalDate returnDate = currentDate.toLocalDate().plusDays(14);
-			inventory.setTanggal_keluar(currentDate);
-			inventory.setTanggal_kembali(Date.valueOf(returnDate));
-			inventory.setPeminjam(parentPanel.getEmployee().getId());
-			table.setData(database.checkoutInventory(inventory));
-			errorLabel.setText("Berhasil checkout.");
-		} catch (Exception e) {
+			thread.join();
+		} catch (InterruptedException e) {
 			errorLabel.setText(e.getMessage());
 		}
+
+		Thread thread1 = new Thread(() -> {
+			Database database = new Database();
+			int sku = table.getSKUValue();
+			try {
+				Inventory inventory = new Inventory(sku);
+				Date currentDate = new Date(System.currentTimeMillis());
+				LocalDate returnDate = currentDate.toLocalDate().plusDays(14);
+				inventory.setTanggal_keluar(currentDate);
+				inventory.setTanggal_kembali(Date.valueOf(returnDate));
+				inventory.setPeminjam(parentPanel.getEmployee().getId());
+				table.setData(database.checkoutInventory(inventory));
+				errorLabel.setText("Berhasil checkout.");
+			} catch (Exception e) {
+				errorLabel.setText(e.getMessage());
+			}
+		});
+		thread1.start();
 	}
 
 	private void returnButton(ParentPanel parentPanel) {
-		Database database = new Database();
-		int sku = table.getSKUValue();
+		Thread thread = new Thread(() -> errorLabel.setText("Loading..."));
+		thread.start();
 		try {
-			Inventory inventory = new Inventory(sku);
-			inventory.setPeminjam(parentPanel.getEmployee().getId());
-			table.setData(database.returnInventory(inventory));
-			errorLabel.setText("Berhasil mengembalikan");
-		} catch (Exception e) {
+			thread.join();
+		} catch (InterruptedException e) {
 			errorLabel.setText(e.getMessage());
 		}
+		Thread thread1 = new Thread(() -> {
+			Database database = new Database();
+			int sku;
+			try {
+				sku = table.getSKUValue();
+			} catch (ArrayIndexOutOfBoundsException e) {
+				errorLabel.setText("Pilih barang dahulu.");
+				return;
+			}
+			try {
+				Inventory inventory = new Inventory(sku);
+				inventory.setPeminjam(parentPanel.getEmployee().getId());
+				table.setData(database.returnInventory(inventory));
+				errorLabel.setText("Berhasil mengembalikan.");
+			} catch (Exception e) {
+				errorLabel.setText(e.getMessage());
+			}
+		});
+		thread1.start();
 	}
 
 	private void removeButton() {
-		Database database = new Database();
-		int sku = table.getSKUValue();
+		Thread thread = new Thread(() -> errorLabel.setText("Loading..."));
+		thread.start();
 		try {
-			Inventory inventory = new Inventory(sku);
-			table.setData(database.removeInventory(inventory));
-		} catch (Exception e) {
+			thread.join();
+		} catch (InterruptedException e) {
 			errorLabel.setText(e.getMessage());
 		}
+
+		Thread thread1 = new Thread(() -> {
+			Database database = new Database();
+			int sku = table.getSKUValue();
+			try {
+				Inventory inventory = new Inventory(sku);
+				table.setData(database.removeInventory(inventory));
+			} catch (Exception e) {
+				errorLabel.setText(e.getMessage());
+			}
+		});
+		thread1.start();
 	}
 
 	private void findSKU(JTextField tf) {
@@ -176,25 +213,39 @@ public class TabledPanel extends JTable {
 		}
 	}
 
-	private void toFile(Employee employee) {
+	private void toFile(Employee employee, JButton button) {
+		Thread thread = new Thread(() -> errorLabel.setText("Saving..."));
+		thread.start();
 		try {
-			String path = "printout_" + employee.getId() + "_"+ LocalDate.now();
-			Writer output = new FileWriter(path);
-			StringBuilder string = new StringBuilder("|");
-			for (int i = 0; i < table.getColumnCount(); i++) {
-				string.append(String.format(" %15s |", table.getColumnName(i)));
-			}
-			for (int i = 0; i < table.getRowCount(); i++) {
-				string.append("\n|");
-				for (int j = 0; j < table.getColumnCount(); j++) {
-					string.append(String.format(" %15s |", table.getValueAt(i, j)));
-				}
-			}
-			output.write(string.toString());
-			output.close();
-		} catch (IOException e) {
+			thread.join();
+		} catch (InterruptedException e) {
 			errorLabel.setText(e.getMessage());
 		}
+
+		Thread thread1 = new Thread(() -> {
+			try {
+				String path = "printout_" + button.getText() + "_" + employee.getId() + "_" + LocalDate.now();
+				Writer output = new FileWriter(path);
+				StringBuilder string = new StringBuilder("|");
+				for (int i = 0; i < table.getColumnCount(); i++) {
+					string.append(String.format(" %15s |", table.getColumnName(i)));
+				}
+				string.append("\n=");
+				string.append("=".repeat(Math.max(0, 18 * table.getColumnCount())));
+				for (int i = 0; i < table.getRowCount(); i++) {
+					string.append("\n|");
+					for (int j = 0; j < table.getColumnCount(); j++) {
+						string.append(String.format(" %15s |", table.getValueAt(i, j)));
+					}
+				}
+				output.write(string.toString());
+				output.close();
+				errorLabel.setText("Berhasil menyimpan.");
+			} catch (IOException e) {
+				errorLabel.setText(e.getMessage());
+			}
+		});
+		thread1.start();
 	}
 
 

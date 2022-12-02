@@ -1,8 +1,8 @@
 package pbol.uts2.guiComponents.panels;
 
-import pbol.uts2.guiComponents.buttons.LandingButton;
 import pbol.uts2.database.Database;
 import pbol.uts2.database.Inventory;
+import pbol.uts2.guiComponents.buttons.LandingButton;
 
 import javax.swing.*;
 import java.awt.*;

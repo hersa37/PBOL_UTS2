@@ -2,15 +2,15 @@ package pbol.uts2.guiComponents.panels;
 
 import pbol.uts2.database.Database;
 import pbol.uts2.database.Employee;
-import pbol.uts2.guiComponents.buttons.LandingButton;
 import pbol.uts2.database.PasswordInvalidException;
+import pbol.uts2.guiComponents.buttons.LandingButton;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 public class LoginPanel extends JPanel {
-	private JLabel errorLabel;
+	private final JLabel errorLabel;
 	public LoginPanel(ParentPanel parentPanel) {
 		super();
 		SpringLayout layout = new SpringLayout();
@@ -60,7 +60,7 @@ public class LoginPanel extends JPanel {
 	}
 
 	private void login(ParentPanel parentPanel, JTextField id, JPasswordField pass){
-		Thread thread = new Thread(() -> errorLabel.setText("Loading..."));
+		Thread thread = new Thread(() -> errorLabel.setText("Connecting..."));
 		thread.start();
 		try {
 			thread.join();
@@ -82,6 +82,7 @@ public class LoginPanel extends JPanel {
 				}
 			} catch (SQLException | FileNotFoundException | PasswordInvalidException | IllegalArgumentException e){
 				errorLabel.setText(e.getMessage());
+				System.out.println(e.getMessage());
 			} catch (NullPointerException e) {
 				errorLabel.setText("User tidak ditemukan");
 			}

@@ -1,4 +1,4 @@
-package pbol.uts2.guiComponents;/*
+package pbol.uts2;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -22,13 +22,14 @@ public class GUIV2 {
 	}
 
 	private void init() {
-		frame = new JFrame("D-sub");
+		frame = new JFrame("Inventory Management System");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new GridLayout(0,1));
 		frame.setSize(1000, 500);
 		frame.setResizable(false);
 		parentPanel = new ParentPanel();
 		frame.add(parentPanel);
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 

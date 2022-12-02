@@ -1,7 +1,5 @@
 package pbol.uts2.database;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 public class Employee {
     private String id;
     private String nama;
