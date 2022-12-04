@@ -113,10 +113,12 @@ public class LoginPanel extends JPanel {
 				} else {
 					parentPanel.showPanel("userPanel");
 				}
-			} catch (SQLException | FileNotFoundException | PasswordInvalidException | IllegalArgumentException e) {
+			} catch (SQLException | PasswordInvalidException | IllegalArgumentException e) {
 				errorLabel.setText(e.getMessage());
 			} catch (NullPointerException e) {
 				errorLabel.setText("User tidak ditemukan");
+			} catch (FileNotFoundException e) {
+				errorLabel.setText("Simpan detail koneksi dahulu.");
 			}
 		});
 		thread1.start();

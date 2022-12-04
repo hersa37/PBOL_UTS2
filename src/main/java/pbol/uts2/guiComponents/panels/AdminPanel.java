@@ -40,7 +40,7 @@ public class AdminPanel extends JPanel {
 		TabledPanel checkoutTab = new TabledPanel(checkoutColumn, 0, parentPanel);
 		adminTab.addTab("Checkout", checkoutTab);
 
-		JPanel addInv = addPanel(parentPanel);
+		JPanel addInv = addInvPanel(parentPanel);
 		adminTab.addTab("Add", addInv);
 
 		String[] removeColumn = {"SKU", "Nama", "Harga", "Tanggal_Masuk", "Tanggal_Keluar", "Tanggal_Kembali", "Satuan", "Peminjam"};
@@ -55,7 +55,7 @@ public class AdminPanel extends JPanel {
 	 * @param parentPanel : panel induk
 	 * @return panel yang sudah diatur.
 	 */
-	private JPanel addPanel(ParentPanel parentPanel) {
+	private JPanel addInvPanel(ParentPanel parentPanel) {
 		JPanel addInv = new JPanel();
 		SpringLayout layout = new SpringLayout();
 		addInv.setLayout(layout);

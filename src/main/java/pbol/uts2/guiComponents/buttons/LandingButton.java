@@ -22,6 +22,7 @@ public class LandingButton extends JButton {
 			parentPanel.resetEmployee();        //Memastikan employee null agar tidak digunakan di sesi berikutnya
 			CardLayout cardLayout = parentPanel.getLayout();
 			cardLayout.show(parentPanel, "landingPanel");   //Panggil layout parent panel dan tunjukkan landing panel
+			parentPanel.resetPanels();
 		});
 	}
 }

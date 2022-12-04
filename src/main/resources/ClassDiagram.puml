@@ -1,0 +1,182 @@
+11@startuml
+'https://plantuml.com/class-diagram
+package "pbol.uts2" {
+class GUIV2
+package "guiComponents" #DDDDDD{
+    package "panels" #FFFFFF{
+    class ParentPanel
+    class AdminPanel
+    class ConnectionPanel
+    class LandingPanel
+    class LoginPanel
+    class TabledPanel
+    class UserPanel
+    }
+    package "buttons" #FFFFFF{
+    class LandingButton
+    }
+    package "tables" #FFFFFF{
+    class InventoryTable
+    }
+}
+package "database" {
+class Database
+class Employee
+class Inventory
+class PasswordInvalidException
+}
+
+}
+
+class GUIV2{
+    + <<constructor>> GUIV2()
+    + main(args : String[]) : void
+    - init() : void
+}
+GUIV2 *-- ParentPanel
+class ParentPanel {
+- employee : Employee
++ <<constructor>> ParentPanel()
++ getEmployee() : Employee
++ resetEmployee() : void
++ setEmployee(Employee) : void
++ showPanel(String) : void
++ resetPanels() : void
+}
+
+class LandingPanel{
+- loginButton : JButton
+- credentialsButton : JButton
++ <<constructor>> LandingPanel()
+}
+ParentPanel *-- LandingPanel
+
+class LandingButton {
+- parentPanel : ParentPanel
++ <<constructor>> LandingButton(ParentPanel)
+}
+
+class LoginPanel {
+- errorLabel : JLabel
++ <<constructor>> LoginPanel()
+- login(ParentPanel, JTextField, JPasswordField) : void
+}
+ParentPanel *-- LoginPanel
+LoginPanel *-- LandingButton
+
+class TabledPanel {
+- table : InventoryTable
+- errorLabel : JLabel
++ <<constructor>> TabledPanel()
+- checkoutButton(ParentPanel) : void
+- returnButton(ParentPanel) : void
+- removeButton() : void
+- findSKU(JTextField) : void
+- toFile(Employee, JButton, String) : void
+}
+ParentPanel "1" *-- "N" TabledPanel
+TabledPanel *-- Database
+
+
+class InventoryTable {
+- data : Object[][]
+- columnNames : String[]
++ <<constructor>> InventoryTable(String[], Object[][], int)
+- tableCellRenderer(int) : DefaultTableCellRenderer
++ getSKUValue() : int
++ setData(LinkedList<Inventory> : void
++ resetTable() : void
+}
+TabledPanel *-- InventoryTable
+
+class ConnectionPanel{
++ <<constructor>> ConnectionPanel(ParentPanel)
+}
+ParentPanel *-- ConnectionPanel
+
+class UserPanel {
++ <<constructor>> UserPanel()
+}
+ParentPanel *-- UserPanel
+
+class AdminPanel {
++ <<constructor>> AdminPanel(ParentPanel)
+- addInvPanel(ParentPanel) : JPanel
+}
+ParentPanel *-- AdminPanel
+
+class Inventory {
+- SKU : int
+- nama : String
+- harga : int
+- tanggal_masuk : Date
+- tanggal_keluar : Date
+- tanggal_kembali : Date
+- satuan : String
+- peminjam : String
++ <<constructor>> Inventory(int)
++ <constructor>> Inventory(int, String, int, Date, Date, Date, String, String)
++ getSKU() : int
++ setSKU(int) : void
++ getNama() : String
++ setNama(String) : void
++ getHarga() : int
++ setHarga(int) : void
++ getTanggal_masuk() : Date
++ setTanggal_masuk(Date) : void
++ getTanggal_keluar() : Date
++ setTanggal_keluar(Date) : void
++ getTanggal_kembali() : Date
++ setTanggal_kembali(Date) : void
++ getSatuan() : String
++ setSatuan(String) : void
++ getPeminjam() : String
++ setPeminjam(String) : void
+}
+Database *-- Inventory
+InventoryTable *-- Inventory
+
+class Database {
++ <<constructor>> Database()
+- createInventoryList(ResultSet) : LinkedList<Inventory>
++ getConnection() : Connection
++ testConnection(String, String, String) : void
++ saveCredentials(String, String, String) : void
++ addInventory(Inventory) : void
++ getInventories() : LinkedList<Inventory
++ updateInventory(Inventory) : void
++ getFreeInventory() : LinkedList<Inventory>
++ getEmployeeInventory(Employee) : LinkedList<Inventory>
++ returnInventory(Inventory) : LinkedList<Inventory>
++ checkoutInventory(Inventory) : LinkedList<Inventory>
++ removeInventory(Inventory) : LinkedList<Inventory>
++ findInventory(Inventory) : Inventory
++ validateEmployee(Employee) : Employee
++ addEmployee(Employee) : void
+}
+ConnectionPanel *-- Database
+
+class Employee {
+- id : String
+- nama : String
+- pass : String
++ <<constructor>> Employee(String)
++ <<constructor>> Employee(String, String, String)
++ getID() : String
++ setID(String) : void
++ getNama() : String
++ setNama(String) : void
++ getPass() : String
++ setPass(String) : void
+}
+ParentPanel *-- Employee
+LoginPanel *-- Employee
+Database *-- Employee
+
+class PasswordInvalidException {
++ <<constructor>> PasswordInvalidException()
+}
+Database *-- PasswordInvalidException
+
+
+@enduml

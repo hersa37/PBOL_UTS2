@@ -64,9 +64,15 @@ public class TabledPanel extends JTable {
 				Database database = new Database();
 				try {
 					switch (columnNames.length) {
-						case 3 -> table.setData(database.getFreeInventory());   //Checkout
-						case 5 -> table.setData(database.getEmployeeInventory(parentPanel.getEmployee())); //Return
-						case 8 -> table.setData(database.getInventories());     //Remove
+						case 3 :
+							table.setData(database.getFreeInventory());
+							break;//Checkout
+						case 5 :
+							table.setData(database.getEmployeeInventory(parentPanel.getEmployee()));
+							break;//Return
+						case 8 :
+							table.setData(database.getInventories());
+							break;//Remove
 					}
 					errorLabel.setText("");
 				} catch (Exception e) {
@@ -83,17 +89,20 @@ public class TabledPanel extends JTable {
 		 */
 		JButton button = new JButton();
 		switch (columnNames.length) {
-			case 3 -> {
+			case 3 : {
 				button.setText("Checkout");
 				button.addActionListener(actionEvent -> checkoutButton(parentPanel));
+				break;
 			}
-			case 5 -> {
+			case 5 : {
 				button.setText("Return");
 				button.addActionListener(actionEvent -> returnButton(parentPanel));
+				break;
 			}
-			case 8 -> {
+			case 8 : {
 				button.setText("Remove");
 				button.addActionListener(actionEvent -> removeButton());
+				break;
 			}
 		}
 
@@ -140,11 +149,11 @@ public class TabledPanel extends JTable {
 	/**
 	 * Method yang dipanggil oleh button jika class dibuat sebagai panel Checkout.
 	 * <p>
-	 * Method meng-update database menggunakan {@link Database#checkoutInventory(Inventory)} dan juga mengupdate table
+	 * Method meng-update database menggunakan {@link Database#checkoutInventory(Inventory)} dan juga meng-update table
 	 * menggunakan {@link InventoryTable#setData(LinkedList)} berdasarkan return dari checkout.
 	 * <p>
 	 * Checkout dilakukan dengan mengubah tanggal keluar menjadi hari saat checkout dilakukan, tanggal kembali menjadi
-	 * 14 hari setelah tanggak keluar, dan peminjam menjadi objek employee yang disimpan di parent panel.
+	 * 14 hari setelah tanggal keluar, dan peminjam menjadi objek employee yang disimpan di parent panel.
 	 *
 	 * @param parentPanel parent panel
 	 */
@@ -178,7 +187,7 @@ public class TabledPanel extends JTable {
 
 	/**
 	 * Method yang dipanggil oleh button saat class dibuat sebagai panel return. Method menggunakan {@link Database#returnInventory(Inventory)}
-	 * untuk mengupdate database.
+	 * untuk meng-update database.
 	 *
 	 * @param parentPanel
 	 */
@@ -250,10 +259,10 @@ public class TabledPanel extends JTable {
 		TableRowSorter<TableModel> filter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(filter);
 		String sku = tf.getText();
-		if (sku.trim().length() == 0) {
+		if (sku == null || sku.trim().length() == 0) {
 			filter.setRowFilter(null);
 		} else {
-			filter.setRowFilter(RowFilter.regexFilter("(?i)" + sku));
+			filter.setRowFilter(RowFilter.regexFilter( "(?i)" + sku,0));
 		}
 	}
 

@@ -8,13 +8,16 @@ import java.awt.*;
 public class ParentPanel extends JPanel {
 
 	private Employee employee;  //Employee yang digunakan untuk sesi disimpan di parent panel
+	private UserPanel userPanel;
+	private AdminPanel adminPanel;
+	private CardLayout layout;
 
 	/**
 	 * Constructor panel. Menggunakan CardLayout untuk menentukan panel apa yang akan ditunjukkan.
 	 */
 	public ParentPanel() {
 		employee = new Employee("Ma000007", "", "123");
-		CardLayout layout = new CardLayout();
+		layout = new CardLayout();
 		setLayout(layout);
 
 		LandingPanel landingPanel = new LandingPanel(this);
@@ -26,10 +29,10 @@ public class ParentPanel extends JPanel {
 		ConnectionPanel connectionPanel = new ConnectionPanel(this);
 		add(connectionPanel, "connectionPanel");
 
-		UserPanel userPanel = new UserPanel(this);
+		userPanel = new UserPanel(this);
 		add(userPanel, "userPanel");
 
-		AdminPanel adminPanel = new AdminPanel(this);
+		adminPanel = new AdminPanel(this);
 		add(adminPanel, "adminPanel");
 	}
 
@@ -74,5 +77,17 @@ public class ParentPanel extends JPanel {
 	 */
 	public void resetEmployee() {
 		employee = null;
+	}
+
+	/**
+	 * Method untuk menghapus panel user dan admin saat ini dan membuat yang baru
+	 */
+	public void resetPanels() {
+		this.remove(adminPanel);
+		this.remove(userPanel);
+		adminPanel = new AdminPanel(this);
+		userPanel = new UserPanel(this);
+		this.add(adminPanel, "adminPanel");
+		this.add(userPanel, "userPanel");
 	}
 }
