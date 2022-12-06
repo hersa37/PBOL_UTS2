@@ -8,6 +8,9 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * Class untuk terhubung ke database
+ */
 public class Database {
 
 	/**
@@ -19,7 +22,7 @@ public class Database {
 	 * @throws IOException saat file tidak dapat dibuat
 	 */
 	public void saveCredentials(String url, String id, String pass) throws IOException {
-		Writer writer = new FileWriter("credentials");
+		Writer writer = new FileWriter("credentials.txt");
 		writer.write(url + "\n" + id + "\n" + pass);
 		writer.close();
 	}
@@ -37,7 +40,7 @@ public class Database {
         URL, user, dan password disimpan dalam file bernama credentials
         Pakai Scanner untuk baca file, tentukan new line sebagai pemisah antar kata
          */
-		Scanner credentials = new Scanner(new File("credentials"));
+		Scanner credentials = new Scanner(new File("credentials.txt"));
 		credentials.useDelimiter(Pattern.compile("\n"));
 		String[] creds = new String[3];
 		int i = 0;

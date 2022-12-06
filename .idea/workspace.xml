@@ -13,14 +13,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a832ac6-4f80-44b8-b417-e83afd69a8a5" name="Changes" comment="- Remade GUI to be more readable">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ClassDiagram.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/buttons/LandingButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/buttons/LandingButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/AdminPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/AdminPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/LoginPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/LoginPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/ParentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/ParentPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/TabledPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/TabledPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/ConnectionPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/ConnectionPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,12 +67,12 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/echa/College/Semester 3/PBOL/UTS2/PBOL_UTS2/src/main/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/echa/College/Semester 3/StrukturDataLinear/UTS2/Proyek_Member&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.18690313&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -124,6 +119,13 @@
       <workItem from="1670117992566" duration="3177000" />
       <workItem from="1670125875792" duration="998000" />
       <workItem from="1670130569977" duration="813000" />
+      <workItem from="1670158195221" duration="655000" />
+      <workItem from="1670199892379" duration="152000" />
+      <workItem from="1670204668672" duration="483000" />
+      <workItem from="1670206656368" duration="24000" />
+      <workItem from="1670221908215" duration="1240000" />
+      <workItem from="1670230529570" duration="11000" />
+      <workItem from="1670289545750" duration="629000" />
     </task>
     <task id="LOCAL-00001" summary="- Remade GUI to be more readable">
       <created>1669898481101</created>
@@ -139,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669943024929</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="- Remade GUI to be more readable">
+      <created>1670158236741</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670158236741</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

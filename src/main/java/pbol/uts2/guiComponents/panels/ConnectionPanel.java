@@ -8,9 +8,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
+ *
  * Panel berisi operasi untuk menghubungkan aplikasi ke database. Terdapat 2 operasi utama yang bisa dilakukan:
- * - Test
- * - Simpan koneksi.
+ *
+ * <li>Test</li>
+ * <li>Simpan koneksi.</li>
+ * <p>
  * Test hanya mencoba koneksi ke database berdasarkan URL, ID, dan password yang diberikan tanpa menyimpan koneksinya
  * <p>
  * Simpan koneksi melakukan pengecekan apakah detail yang dimasukkan valid, lalu menyimpannya jika memang valid.
