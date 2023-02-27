@@ -13,6 +13,7 @@ public class LandingButton extends JButton {
 	ParentPanel parentPanel;
 
 	/**
+	 * Constructor with parent panel to go to
 	 * @param parentPanel Panel yang mengandung semua komponen GUI
 	 */
 	public LandingButton(ParentPanel parentPanel) {

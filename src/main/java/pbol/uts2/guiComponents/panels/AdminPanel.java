@@ -6,19 +6,18 @@ import pbol.uts2.guiComponents.buttons.LandingButton;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileNotFoundException;
 import java.sql.Date;
-import java.sql.SQLException;
 
 /**
  * Panel yang berisikan halaman-halaman yang dapat digunakan oleh admin. Panel sendiri menggunakan {@link GridLayout} untuk menyimpan
  * objek {@link JTabbedPane} yang nanti akan menyimpan panel-panel operasi.
  * <p>
  * Terdapat 4 tab yang dapat ditampilkan:
- * - Return
- * - Checkout
- * - Add
- * - Remove
+ *  <li>Return</li>
+ *  <li>Checkout</li>
+ *  <li>Add</li>
+ *  <li>Remove</li>
+ *  <p>
  * Return, checkout, dan remove dibuat berdasarkan {@link TabledPanel}, di mana yang membuatnya berbeda adalah nama per kolom.
  * Jumlah kolom akan menentukan panel tersebut akan beroperasi seperti apa
  * <p>
@@ -125,24 +124,24 @@ public class AdminPanel extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, addButton, 0, SpringLayout.EAST, landingButton);
 		layout.putConstraint(SpringLayout.WEST, addButton, 0, SpringLayout.WEST, landingButton);
 		addButton.addActionListener(actionEvent -> {
-			Inventory inventory = new Inventory(
-					Integer.parseInt(skuTF.getText()),
-					namaTF.getText(),
-					Integer.parseInt(hargaTF.getText()),
-					new Date(System.currentTimeMillis()),
-					null,
-					null,
-					satuanTF.getText(),
-					null);
-			Database database = new Database();
 			try {
+				Inventory inventory = new Inventory(
+						Integer.parseInt(skuTF.getText()),
+						namaTF.getText(),
+						Integer.parseInt(hargaTF.getText()),
+						new Date(System.currentTimeMillis()),
+						null,
+						null,
+						satuanTF.getText(),
+						null);
+				Database database = new Database();
 				database.addInventory(inventory);       //Kalau SKU tidak memenuhi, maka akan melemparkan exception
 				errorLabel.setText("Berhasil memasukkan barang.");
 				skuTF.setText("");
 				namaTF.setText("");
 				hargaTF.setText("");
 				satuanTF.setText("");
-			} catch (SQLException | FileNotFoundException e) {
+			} catch (Exception e) {
 				errorLabel.setText(e.getMessage());
 			}
 		});

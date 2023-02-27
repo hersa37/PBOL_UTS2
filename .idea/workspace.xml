@@ -12,10 +12,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a832ac6-4f80-44b8-b417-e83afd69a8a5" name="Changes" comment="- Remade GUI to be more readable">
+    <list default="true" id="5a832ac6-4f80-44b8-b417-e83afd69a8a5" name="Changes" comment="- prepresentation">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PBOL_UTS21_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/PBOL_UTS21_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/GUIV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/GUIV2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/database/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/database/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/database/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/database/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/database/PasswordInvalidException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/database/PasswordInvalidException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/buttons/LandingButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/buttons/LandingButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/AdminPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/AdminPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/ConnectionPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/ConnectionPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/LandingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/LandingPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/LoginPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/LoginPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/ParentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/ParentPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/TabledPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/TabledPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/UserPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/panels/UserPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/tables/InventoryTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pbol/uts2/guiComponents/tables/InventoryTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ClassDiagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ClassDiagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ClassDiagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ClassDiagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +50,7 @@
       <list>
         <option value="Class" />
         <option value="UML Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -67,12 +91,17 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/echa/College/Semester 3/StrukturDataLinear/UTS2/Proyek_Member&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/echa/College/Semester 3/PBOL/UTS2/PBOL_UTS2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.18690313&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Language Defaults&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -83,9 +112,11 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="pbol.uts2.GUIV2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="GUIV2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-19.0.1" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="pbol.uts2.GUIV2" />
-      <module name="PBOL_UTS21" />
+      <module name="PBOL_UTS2" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pbol.uts2.*" />
@@ -98,7 +129,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.pbol.uts2.GUIV2" />
+        <item itemvalue="Application.GUIV2" />
       </list>
     </recent_temporary>
   </component>
@@ -125,7 +156,38 @@
       <workItem from="1670206656368" duration="24000" />
       <workItem from="1670221908215" duration="1240000" />
       <workItem from="1670230529570" duration="11000" />
-      <workItem from="1670289545750" duration="629000" />
+      <workItem from="1670289545750" duration="3195000" />
+      <workItem from="1670304746863" duration="1004000" />
+      <workItem from="1670307626583" duration="1578000" />
+      <workItem from="1670311930156" duration="1050000" />
+      <workItem from="1670317608428" duration="53000" />
+      <workItem from="1670317947637" duration="119000" />
+      <workItem from="1670318087800" duration="95000" />
+      <workItem from="1670318207117" duration="118000" />
+      <workItem from="1670318418237" duration="1870000" />
+      <workItem from="1670491879261" duration="2468000" />
+      <workItem from="1670494864125" duration="1342000" />
+      <workItem from="1670497880269" duration="606000" />
+      <workItem from="1670564214067" duration="1191000" />
+      <workItem from="1670717977917" duration="2545000" />
+      <workItem from="1670728051475" duration="90000" />
+      <workItem from="1670728166880" duration="2799000" />
+      <workItem from="1670757134575" duration="1646000" />
+      <workItem from="1670890321530" duration="41000" />
+      <workItem from="1671023447486" duration="777000" />
+      <workItem from="1671079752971" duration="42000" />
+      <workItem from="1671249814858" duration="22000" />
+      <workItem from="1671251659733" duration="70000" />
+      <workItem from="1671255989716" duration="761000" />
+      <workItem from="1671375408258" duration="172000" />
+      <workItem from="1672196138563" duration="139000" />
+      <workItem from="1674044353062" duration="460000" />
+      <workItem from="1676252729505" duration="248000" />
+      <workItem from="1676255440530" duration="199000" />
+      <workItem from="1676420518288" duration="39000" />
+      <workItem from="1676966452938" duration="10000" />
+      <workItem from="1677023824921" duration="8000" />
+      <workItem from="1677119455421" duration="1878000" />
     </task>
     <task id="LOCAL-00001" summary="- Remade GUI to be more readable">
       <created>1669898481101</created>
@@ -148,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670158236741</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- Remade GUI to be more readable">
+      <created>1670290206047</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670290206047</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,7 +236,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Remade GUI to be more readable" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Remade GUI to be more readable" />
+    <MESSAGE value="- prepresentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="- prepresentation" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

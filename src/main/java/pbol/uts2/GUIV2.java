@@ -1,10 +1,16 @@
 package pbol.uts2;
 
-import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatArcDarkOrangeIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme;
+import pbol.uts2.database.Employee;
+import pbol.uts2.guiComponents.panels.AdminPanel;
 import pbol.uts2.guiComponents.panels.ParentPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.LinkedList;
+import java.util.Objects;
 
 /**
  * Main class untuk GUI database
@@ -27,6 +33,7 @@ public class GUIV2 {
 		}
 		new GUIV2();
 	}
+
 
 	private void init() {
 		frame = new JFrame("Inventory Management System");

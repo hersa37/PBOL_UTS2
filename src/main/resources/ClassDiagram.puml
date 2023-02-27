@@ -1,22 +1,25 @@
-11@startuml
+@startuml
+skinparam linetype ortho
 'https://plantuml.com/class-diagram
 package "pbol.uts2" {
 class GUIV2
 package "guiComponents" #DDDDDD{
     package "panels" #FFFFFF{
     class ParentPanel
-    class AdminPanel
-    class ConnectionPanel
-    class LandingPanel
-    class LoginPanel
-    class TabledPanel
-    class UserPanel
+        together {
+        class AdminPanel
+        class ConnectionPanel
+        class LandingPanel
+        class LoginPanel
+        class TabledPanel
+        class UserPanel
+        }
     }
     package "buttons" #FFFFFF{
-    class LandingButton
+        class LandingButton
     }
     package "tables" #FFFFFF{
-    class InventoryTable
+        class InventoryTable
     }
 }
 package "database" {
@@ -61,8 +64,8 @@ class LoginPanel {
 + <<constructor>> LoginPanel()
 - login(ParentPanel, JTextField, JPasswordField) : void
 }
-ParentPanel *-- LoginPanel
 LoginPanel *-- LandingButton
+LoginPanel --* ParentPanel
 
 class TabledPanel {
 - table : InventoryTable
@@ -74,7 +77,7 @@ class TabledPanel {
 - findSKU(JTextField) : void
 - toFile(Employee, JButton, String) : void
 }
-ParentPanel "1" *-- "N" TabledPanel
+ParentPanel  *-  TabledPanel
 TabledPanel *-- Database
 
 
@@ -97,7 +100,7 @@ ParentPanel *-- ConnectionPanel
 class UserPanel {
 + <<constructor>> UserPanel()
 }
-ParentPanel *-- UserPanel
+ParentPanel *- UserPanel
 
 class AdminPanel {
 + <<constructor>> AdminPanel(ParentPanel)
@@ -134,7 +137,7 @@ class Inventory {
 + setPeminjam(String) : void
 }
 Database *-- Inventory
-InventoryTable *-- Inventory
+InventoryTable *--- Inventory
 
 class Database {
 + <<constructor>> Database()
@@ -170,7 +173,7 @@ class Employee {
 + setPass(String) : void
 }
 ParentPanel *-- Employee
-LoginPanel *-- Employee
+LoginPanel *---- Employee
 Database *-- Employee
 
 class PasswordInvalidException {
@@ -178,5 +181,13 @@ class PasswordInvalidException {
 }
 Database *-- PasswordInvalidException
 
+'class JPanel{}
+' JPanel <|-- AdminPanel
+' JPanel <|-- ConnectionPanel
+' JPanel <|-- LandingPanel
+' JPanel <|-- LoginPanel
+' JPanel <|-- ParentPanel
+' JPanel <|-- TabledPanel
+' JPanel <|-- UserPanel
 
 @enduml
