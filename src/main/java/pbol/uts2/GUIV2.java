@@ -3,12 +3,15 @@ package pbol.uts2;
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkOrangeIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme;
+import pbol.uts2.database.Database;
 import pbol.uts2.database.Employee;
 import pbol.uts2.guiComponents.panels.AdminPanel;
 import pbol.uts2.guiComponents.panels.ParentPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Objects;
 
@@ -45,5 +48,13 @@ public class GUIV2 {
 		frame.add(parentPanel);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		Database db = new Database();
+		try {
+			db.createTables();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());;
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }

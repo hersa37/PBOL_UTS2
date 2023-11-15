@@ -25,6 +25,12 @@ public class Database {
 		Writer writer = new FileWriter("credentials.txt");
 		writer.write(url + "\n" + id + "\n" + pass);
 		writer.close();
+
+		try {
+			this.createTables();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	/**
@@ -48,14 +54,14 @@ public class Database {
         Simpan tiap baris file dalam array String
         index 0 = url, 1 = user, 2 = password
 
-         String usr = "College_troublemad";
-        String pwd = "3c6cc66453d1ce9f4dd76803bc7b1eed459641f4";*/
+       */
 		while (credentials.hasNext()) {
 			creds[i] = credentials.next();
 			i++;
 		}
 		Connection conn;
 		conn = DriverManager.getConnection(creds[0], creds[1], creds[2]);
+
 		/*
 		conn = null dihandle method yang panggil
 		 */
@@ -63,6 +69,35 @@ public class Database {
 		return conn;
 	}
 
+	/*
+	 * Creates table if it doesn't exist
+	 */
+	public void createTables() throws SQLException, FileNotFoundException{
+		//		Create tables in case table does not exist
+		try(Connection conn = this.getConnection();
+		    Statement statement = conn.createStatement()) {
+			String createInventory = "CREATE TABLE IF NOT EXISTS Inventory (" +
+					"SKU INT," +
+					"Nama VARCHAR(50)," +
+					"Harga INT," +
+					"Tanggal_Masuk DATE," +
+					"Tanggal_Keluar DATE," +
+					"Tanggal_Kembali DATE," +
+					"Satuan VARCHAR(50)," +
+					"Peminjam VARCHAR(50)," +
+					"PRIMARY KEY (SKU)" +
+					")";
+			statement.executeUpdate(createInventory);
+
+			String createEmployee = "CREATE TABLE IF NOT EXISTS employees (" +
+					"id VARCHAR(50)," +
+					"nama VARCHAR(50)," +
+					"pass VARCHAR(255)," +
+					"PRIMARY KEY (id)" +
+					")";
+			statement.executeUpdate(createEmployee);
+		}
+	}
 	/**
 	 * Method untuk mengetes koneksi ke database berdasarkan parameter yang dimasukkan
 	 *
