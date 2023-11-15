@@ -83,7 +83,8 @@ public class Database {
 	 * @throws FileNotFoundException saat file detail koneksi tidak ditemukan
 	 */
 	public void addInventory(Inventory inventory) throws SQLException, FileNotFoundException {
-		try (Connection connection = this.getConnection(); PreparedStatement statement = connection.prepareStatement("INSERT INTO Inventory (SKU, Nama, Harga, Tanggal_Masuk, Tanggal_Keluar, Tanggal_Kembali, Satuan, Peminjam) VALUE (?,?,?,?,?,?,?,?)")) {
+		try (Connection connection = this.getConnection(); PreparedStatement statement = connection.prepareStatement(
+				"INSERT INTO Inventory (SKU, Nama, Harga, Tanggal_Masuk, Tanggal_Keluar, Tanggal_Kembali, Satuan, Peminjam) VALUE (?,?,?,?,?,?,?,?)")) {
 			statement.setInt(1, inventory.getSKU());
 			statement.setString(2, inventory.getNama());
 			statement.setInt(3, inventory.getHarga());

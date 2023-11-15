@@ -21,7 +21,7 @@ public class LandingPanel extends JPanel {
 		(<sisi komponen yang posisinya ditentukan>, <komponen yang posisinya ditentukan>, <jarak>, <sisi komponen pembanding>, <komponen pembanding>)
 		 */
 		loginButton = new JButton("Masuk ke database");
-		layout.putConstraint(SpringLayout.WEST, loginButton, 400, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, loginButton, 400, SpringLayout.WEST, this );
 		layout.putConstraint(SpringLayout.NORTH, loginButton, 200, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.EAST, loginButton, -400, SpringLayout.EAST, this);
 		loginButton.addActionListener(actionEvent -> parent.showPanel("loginPanel"));   //Saat dipencet, tampilkan login panel

@@ -61,7 +61,7 @@ public class AdminPanel extends JPanel {
 
 		//SKU label dan text field
 		JLabel sku = new JLabel("SKU");
-		layout.putConstraint(SpringLayout.WEST, sku, 300, SpringLayout.WEST, addInv);
+		layout.putConstraint(SpringLayout.WEST, sku, 100, SpringLayout.WEST, addInv);
 		layout.putConstraint(SpringLayout.NORTH, sku, 100, SpringLayout.NORTH, addInv);
 		addInv.add(sku);
 
